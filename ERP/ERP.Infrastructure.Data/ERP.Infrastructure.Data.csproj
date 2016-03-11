@@ -30,7 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,13 +54,29 @@
     <Compile Include="Context\Finances\FinancesContext.cs" />
     <Compile Include="Context\Sales\SalesContext.cs" />
     <Compile Include="Context\Shared\SharedContext.cs" />
-    <Compile Include="Context\Shopping\ShoppingContext.cs" />
+    <Compile Include="Context\Shopping\PurchaseUnitOfWork.cs" />
+    <Compile Include="EntityFramework\ErpUnitOfWork.cs" />
+    <Compile Include="Mapping\SupplierDbMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Base\RepositoryBase.cs" />
+    <Compile Include="Repositories\Suppliers\SupplierRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Mapping\" />
     <Folder Include="Migrations\" />
-    <Folder Include="Repositories\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ERP.Crosscut\ERP.Crosscut.csproj">
+      <Project>{D7E66871-050B-4564-8127-FC0962BC4D0C}</Project>
+      <Name>ERP.Crosscut</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Domain\ERP.Domain.csproj">
+      <Project>{C7FF2EFE-1DDB-4424-8906-41D8E379302E}</Project>
+      <Name>ERP.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

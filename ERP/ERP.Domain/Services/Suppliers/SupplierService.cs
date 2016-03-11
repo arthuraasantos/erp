@@ -1,6 +1,6 @@
-﻿using ERP.Domain.Entities;
+﻿using ERP.Domain.Entities.Suppliers;
 
-namespace ERP.Domain.Services
+namespace ERP.Domain.Services.Suppliers
 {
 
     public static class SupplierService

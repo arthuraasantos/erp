@@ -1,14 +1,10 @@
-﻿using System;
-using ERP.Domain.Services;
+﻿using ERP.Domain.Entities.Commom;
+using ERP.Domain.Services.Suppliers;
 
-namespace ERP.Domain.Entities
+namespace ERP.Domain.Entities.Suppliers
 {
-    public class Supplier
+    public class Supplier: AuditableEntity
     {
-        public EntityId Id { get; set; }
-        public DateTime CreateDate { get; set; }
-        public DateTime? DeleteDate { get; set; }
-        public DateTime? UpdateDate { get; set; }
         public string Name { get; set; }
         public int CpfCnpj { get; set; }
         public string RegistrationName { get; set; }
