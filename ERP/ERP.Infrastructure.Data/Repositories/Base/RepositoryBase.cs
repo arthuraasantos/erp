@@ -3,27 +3,26 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using ERP.Crosscut.UnitOfWork;
 using ERP.Domain.Common;
 using ERP.Domain.Entities.Commom;
 using ERP.Domain.Interfaces.Base;
-using ERP.Infrastructure.Data.EntityFramework;
+using ERP.Infrastructure.Data.Context.Purchase;
+
 
 namespace ERP.Infrastructure.Data.Repositories.Base
 {
     public class RepositoryBase<T>: IRepositoryBase<T>
         where T: AuditableEntity
     {
-        protected IErpContext ErpContext { get; set; }
-        protected ErpUnitOfWork Uow { get; set; }
+        protected PurchaseUnitOfWork Uow { get; set; }
         protected IDbConnection Dapper { get; set; }
 
-        public RepositoryBase(IUnitOfWork uow, IErpContext context)
+        public RepositoryBase(IPurchaseUnitOfWork uow)
         {
-            ErpContext = context;
-            var unitOfWork = uow as ErpUnitOfWork;
+            
+            var unitOfWork = uow as PurchaseUnitOfWork;
             if (unitOfWork == null)
-                throw  new ArgumentException($"É obrigatório a utilização de uma unidade de trabalho do tipo {nameof(ErpUnitOfWork)}" );
+                throw  new ArgumentException($"É obrigatório a utilização de uma unidade de trabalho do tipo {nameof(PurchaseUnitOfWork)}" );
 
             Uow = unitOfWork;
             Dapper = unitOfWork.Database.Connection;

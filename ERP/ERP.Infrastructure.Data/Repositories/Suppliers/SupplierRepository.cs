@@ -1,18 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using ERP.Crosscut.UnitOfWork;
-using ERP.Domain.Common;
 using ERP.Domain.Entities.Suppliers;
-using ERP.Infrastructure.Data.Context.Shopping;
+using ERP.Domain.Interfaces.Suppliers;
+using ERP.Infrastructure.Data.Context.Purchase;
 using ERP.Infrastructure.Data.Repositories.Base;
 
 namespace ERP.Infrastructure.Data.Repositories.Suppliers
 {
-    public class SupplierRepository: RepositoryBase<Supplier>
+    public class SupplierRepository: RepositoryBase<Supplier>,ISupplierRepository
     {
-        public SupplierRepository(IUnitOfWork uow, PurchaseUnitOfWork context) : base(uow, context)
+        public SupplierRepository(PurchaseUnitOfWork context) : base(context)
         {
+            
         }
-       
+
+        public List<Supplier> GetInactiveSuppliers()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

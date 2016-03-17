@@ -1,6 +1,6 @@
-﻿namespace ERP.Domain.Entities.Common
+﻿namespace ERP.Services.ShoppingAppService.Dtos.Common
 {
-    public class Address
+    public class AddressDto
     {
         public string AddressLine { get; set; }
         public string Number { get; set; }

@@ -43,6 +43,7 @@
     <Compile Include="Common\IClient.cs" />
     <Compile Include="Common\ILicence.cs" />
     <Compile Include="Common\IOrganization.cs" />
+    <Compile Include="Common\IPurchaseUnitOfWork.cs" />
     <Compile Include="Common\IUser.cs" />
     <Compile Include="Common\IErpContext.cs" />
     <Compile Include="Entities\Common\Address.cs" />

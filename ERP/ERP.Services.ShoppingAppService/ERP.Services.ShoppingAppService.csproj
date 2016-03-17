@@ -40,12 +40,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\Base\ConverterBase.cs" />
+    <Compile Include="Converters\Suppliers\SupplierNewDtoConverter.cs" />
+    <Compile Include="Dtos\Common\AddressDto.cs" />
+    <Compile Include="Dtos\Supplier\SupplierDto.cs" />
+    <Compile Include="Dtos\Supplier\SupplierEditDto.cs" />
+    <Compile Include="Dtos\Supplier\SupplierNewDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Dtos\" />
     <Folder Include="Entities\" />
     <Folder Include="Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ERP.Crosscut\ERP.Crosscut.csproj">
+      <Project>{D7E66871-050B-4564-8127-FC0962BC4D0C}</Project>
+      <Name>ERP.Crosscut</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Domain\ERP.Domain.csproj">
+      <Project>{C7FF2EFE-1DDB-4424-8906-41D8E379302E}</Project>
+      <Name>ERP.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
