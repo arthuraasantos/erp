@@ -12,7 +12,7 @@ using ERP.Infrastructure.Data.Context.Purchase;
 namespace ERP.Infrastructure.Data.Repositories.Base
 {
     public class RepositoryBase<T>: IRepositoryBase<T>
-        where T: AuditableEntity
+        where T: AuditableOrganizationEntity
     {
         protected PurchaseUnitOfWork Uow { get; set; }
         protected IDbConnection Dapper { get; set; }
