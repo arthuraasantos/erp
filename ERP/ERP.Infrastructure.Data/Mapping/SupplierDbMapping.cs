@@ -9,15 +9,19 @@ namespace ERP.Infrastructure.Data.Mapping
     {
         public SupplierDbMapping()
         {
+            ToTable("Suppliers");
+
             HasKey(s => s.Id);
+            HasRequired(s => s.Organization);
+
             Property(s => s.Name).HasColumnName("Name").HasMaxLength(100);
             Property(s => s.CpfCnpj)
                 .HasColumnAnnotation("IndexCpfCnpj", new IndexAnnotation(new IndexAttribute() {IsUnique = true}));
-
+            
             Ignore(p => p.Address);
             Ignore(p => p.FinancialAddress);
 
-            ToTable("Suppliers");
+            
         }
     }
 }

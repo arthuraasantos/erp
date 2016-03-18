@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using ERP.Domain.Common;
-using ERP.Domain.Entities.Commom;
+using ERP.Domain.Entities.Common;
 using ERP.Domain.Interfaces.Base;
 using ERP.Infrastructure.Data.Context.Purchase;
 

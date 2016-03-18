@@ -53,7 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Converters\Suppliers\SupplierNewDtoConverter.cs" />
+    <Compile Include="Converters\Suppliers\SupplierNewDtoConverterOrganizationEntity.cs" />
     <Compile Include="DependencyInjector\DependencyInjectorManager.cs" />
     <Compile Include="Dtos\Common\AddressDto.cs" />
     <Compile Include="Dtos\Supplier\SupplierDto.cs" />

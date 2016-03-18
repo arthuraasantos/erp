@@ -41,8 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppInfo\AppModule.cs" />
-    <Compile Include="Converters\Converter.cs" />
-    <Compile Include="Converters\IConverter.cs" />
+    <Compile Include="Converters\ConverterOrganizationEntity.cs" />
+    <Compile Include="Converters\IConverterOrganizationEntity.cs" />
     <Compile Include="Exceptions\ApplicationException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />

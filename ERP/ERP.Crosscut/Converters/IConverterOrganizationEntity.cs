@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ERP.Domain.Entities.Commom;
+using ERP.Domain.Entities.Common;
 
 namespace ERP.Crosscut.Converters
 {
-    public interface IConverter<TOrigin, TDestiny>
+    public interface IConverterOrganizationEntity<TOrigin, TDestiny>
         where TOrigin: class
-        where TDestiny: AuditableEntity
+        where TDestiny: AuditableOrganizationEntity
     {
         TDestiny Convert(TOrigin origin, TDestiny destiny);
         TOrigin Convert(TDestiny origin, TOrigin  destiny);

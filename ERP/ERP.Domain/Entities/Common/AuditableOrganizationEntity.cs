@@ -2,7 +2,7 @@
 
 namespace ERP.Domain.Entities.Common
 {
-    public abstract class AuditableEntity
+    public abstract class AuditableOrganizationEntity
     {
         public Guid Id { get; set; }
         public Guid OrganizationId { get; set; }

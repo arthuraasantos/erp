@@ -1,4 +1,5 @@
-﻿using ERP.Services.PurchaseServices.Dtos.Common;
+﻿using System;
+using ERP.Services.PurchaseServices.Dtos.Common;
 
 namespace ERP.Services.PurchaseServices.Dtos.Supplier
 {
@@ -16,5 +17,6 @@ namespace ERP.Services.PurchaseServices.Dtos.Supplier
         public string CityRegistration { get; set; }
         public string StateRegistration { get; set; }
         public string Comments { get; set; }
+        public Guid OrganizationId { get; set; }
     }
 }

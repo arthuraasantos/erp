@@ -9,12 +9,12 @@ namespace ERP.Services.PurchaseServices.Services.Suppliers
     public class SupplierAppService : ISupplierAppService
     {
         private readonly ISupplierRepository _supplierRepository;
-        private readonly SupplierNewDtoConverter _supplierConverter;
+        private readonly SupplierNewDtoConverterOrganizationEntity _supplierConverterOrganizationEntity;
 
         public SupplierAppService(ISupplierRepository supplierRepository)
         {
             _supplierRepository = supplierRepository;
-            _supplierConverter = new SupplierNewDtoConverter();
+            _supplierConverterOrganizationEntity = new SupplierNewDtoConverterOrganizationEntity();
         }
 
         public Guid CreateSupplier(SupplierNewDto newSupplier)
@@ -23,7 +23,7 @@ namespace ERP.Services.PurchaseServices.Services.Suppliers
             {
                 if (!IsValidNewSupplier(newSupplier)) throw  new ArgumentNullException($"Um campo obrigatório não foi preenchido");
 
-                var supplier = _supplierConverter.Convert(newSupplier, null);
+                var supplier = _supplierConverterOrganizationEntity.Convert(newSupplier, null);
                 _supplierRepository.Save(supplier);
                 _supplierRepository.Execute();
 
