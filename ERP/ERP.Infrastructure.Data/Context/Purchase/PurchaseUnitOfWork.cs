@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using ERP.Domain.Common;
+using ERP.Domain.Entities.Products;
 using ERP.Domain.Entities.Suppliers;
 using ERP.Infrastructure.Data.Mapping;
 
@@ -84,6 +85,7 @@ namespace ERP.Infrastructure.Data.Context.Purchase
         #region DBSets
 
         public DbSet<Supplier> Suppliers { get; set; } 
+        public DbSet<Product> Products { get; set; } 
         #endregion
     }
 }
