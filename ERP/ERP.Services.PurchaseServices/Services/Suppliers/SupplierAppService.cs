@@ -17,13 +17,14 @@ namespace ERP.Services.PurchaseServices.Services.Suppliers
             _supplierConverterOrganizationEntity = new SupplierNewDtoConverterOrganizationEntity();
         }
 
-        public Guid CreateSupplier(SupplierNewDto newSupplier)
+        public Guid CreateSupplier(SupplierNewDto newSupplier, Guid organizationId)
         {
             try
             {
                 if (!IsValidNewSupplier(newSupplier)) throw  new ArgumentNullException($"Um campo obrigatório não foi preenchido");
 
                 var supplier = _supplierConverterOrganizationEntity.Convert(newSupplier, null);
+                supplier.OrganizationId = organizationId;
                 _supplierRepository.Save(supplier);
                 _supplierRepository.Execute();
 

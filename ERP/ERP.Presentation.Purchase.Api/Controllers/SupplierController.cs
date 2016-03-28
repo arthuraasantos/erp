@@ -31,16 +31,16 @@ namespace ERP.Presentation.Purchase.Api.Controllers
         // POST: api/Supplier
         [HttpPost]
         [Route("suppliers")]
-        public HttpResponseMessage Post([FromBody] SupplierNewDto newSupplier) 
+        public HttpResponseMessage Post([FromBody] SupplierNewDto newSupplier, Guid organizationId) 
         {
             try
             {
-                var result = _supplierService.CreateSupplier(newSupplier);
+                var result = _supplierService.CreateSupplier(newSupplier, organizationId);
                 return Request.CreateResponse(HttpStatusCode.OK, $"ID :{result}");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Erro na criação do fornecedor");
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Erro na criação do fornecedor.");
             }
         }
 
