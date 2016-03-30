@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ERP.Domain.Interfaces.Base
 {
@@ -11,5 +12,7 @@ namespace ERP.Domain.Interfaces.Base
         List<T> GetAll();
         T Delete(T entity);
         void Execute();
+        IQueryable<T> BaseQuery();
+        IQueryable<T> BaseWithDeleted();
     }
 }

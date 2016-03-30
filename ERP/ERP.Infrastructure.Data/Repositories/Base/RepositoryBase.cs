@@ -19,10 +19,8 @@ namespace ERP.Infrastructure.Data.Repositories.Base
 
         public RepositoryBase(IPurchaseUnitOfWork uow)
         {
-            
             var unitOfWork = uow as PurchaseUnitOfWork;
-            if (unitOfWork == null)
-                throw  new ArgumentException($"É obrigatório a utilização de uma unidade de trabalho do tipo {nameof(PurchaseUnitOfWork)}" );
+            if (unitOfWork == null) throw  new ArgumentException($"É obrigatório a utilização de uma unidade de trabalho do tipo {nameof(PurchaseUnitOfWork)}" );
 
             Uow = unitOfWork;
             Dapper = unitOfWork.Database.Connection;
@@ -32,7 +30,7 @@ namespace ERP.Infrastructure.Data.Repositories.Base
         {
             try
             {
-                var entity = Uow.Set<T>().FirstOrDefault(e => e.Id == entityForDelete.Id);
+                var entity = BaseQuery().FirstOrDefault(e => e.Id == entityForDelete.Id);
                 if (entity == null)
                     throw new ArgumentNullException($"Entidade não existe");
 
@@ -49,23 +47,20 @@ namespace ERP.Infrastructure.Data.Repositories.Base
             
         }
 
-        public T Get(Guid key) => Uow.Set<T>().FirstOrDefault(p => p.Id == key);
+        public T Get(Guid key) => BaseQuery().FirstOrDefault(p => p.Id == key);
 
-        public List<T> GetAll() => Uow.Set<T>().ToList();
+        public List<T> GetAll() => BaseQuery().ToList();
 
         public T Save(T entity)
         {
             var set = Uow.Set<T>();
-            if (set.Local.Any(e => e == entity))
-                Uow.Entry<T>(entity).State = EntityState.Modified;
-            else
-                set.Add(entity);
+            Uow.Entry<T>(entity).State = set.Local.Any(e => e == entity) ? EntityState.Modified : EntityState.Added;
 
             return entity;
         }
 
         public void Execute() => Uow.SaveChanges();
-
-
+        public IQueryable<T> BaseQuery() => Uow.Set<T>().Where(p => p.DeleteDate == null);
+        public IQueryable<T> BaseWithDeleted() => Uow.Set<T>();
     }
 }
