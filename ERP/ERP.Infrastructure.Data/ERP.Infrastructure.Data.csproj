@@ -58,7 +58,12 @@
     <Compile Include="Context\Sales\SalesContext.cs" />
     <Compile Include="Context\Shared\SharedContext.cs" />
     <Compile Include="Context\Purchase\PurchaseUnitOfWork.cs" />
+    <Compile Include="Mapping\Base\OrganizationEntityDbMapping.cs" />
+    <Compile Include="Mapping\PricePlanDbMapping.cs" />
     <Compile Include="Mapping\ProductDbMapping.cs" />
+    <Compile Include="Mapping\SectionDbMapping.cs" />
+    <Compile Include="Mapping\StockDbMapping.cs" />
+    <Compile Include="Mapping\StockProductDbMapping.cs" />
     <Compile Include="Mapping\SupplierDbMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PurchaseMigrations\Configuration.cs" />
