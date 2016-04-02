@@ -17,6 +17,13 @@ namespace ERP.Infrastructure.Data.Mapping
             Property(p => p.Email).HasColumnName("Email");
             Property(p => p.RegistrationCode).HasColumnName("RegistrationCode");
             Property(p => p.RegistrationName).HasColumnName("RegistrationName");
+            Property(p => p.Address.AddressLine).HasColumnName("AddressLine");
+            Property(p => p.Address.Number).HasColumnName("Number");
+            Property(p => p.Address.Adjunct).HasColumnName("Adjunct");
+            Property(p => p.Address.District).HasColumnName("District");
+            Property(p => p.Address.ZipCode).HasColumnName("ZipCode");
+            Property(p => p.Address.City).HasColumnName("City");
+            Property(p => p.Address.State).HasColumnName("State");
 
             ToTable("Organizations");
         }

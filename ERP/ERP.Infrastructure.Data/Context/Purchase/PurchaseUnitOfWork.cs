@@ -4,7 +4,11 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using ERP.Domain.Common;
+using ERP.Domain.Entities.Organizations;
 using ERP.Domain.Entities.Products;
+using ERP.Domain.Entities.Products.PricePlans;
+using ERP.Domain.Entities.Products.Sections;
+using ERP.Domain.Entities.Products.Stocks;
 using ERP.Domain.Entities.Suppliers;
 using ERP.Infrastructure.Data.Mapping;
 
@@ -88,6 +92,12 @@ namespace ERP.Infrastructure.Data.Context.Purchase
 
         public DbSet<Supplier> Suppliers { get; set; } 
         public DbSet<Product> Products { get; set; } 
+        public DbSet<Domain.Entities.Products.Stocks.Stock> Stocks { get; set; } 
+        public DbSet<Section> Sections { get; set; } 
+        public DbSet<StockProduct> StockProducts { get; set; } 
+        public DbSet<PricePlan> PricePlans { get; set; }
+        public DbSet<Organization> Organizations { get; set; }
+        
         #endregion
     }
 }
