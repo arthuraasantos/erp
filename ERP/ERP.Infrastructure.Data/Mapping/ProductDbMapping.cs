@@ -12,7 +12,6 @@ namespace ERP.Infrastructure.Data.Mapping
             HasKey(p => p.Id);
             HasOptional(p => p.Section).WithMany().HasForeignKey(p => p.SectionId);
             HasOptional(p => p.PricePlan).WithMany().HasForeignKey(p => p.PricePlanId);
-
             Property(p => p.Id).HasColumnName("ProductId");
             Property(p => p.Description)
                 .HasColumnName("Description")

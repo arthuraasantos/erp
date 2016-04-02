@@ -18,7 +18,6 @@ namespace ERP.Infrastructure.Data.Mapping
             Ignore(p => p.FinancialAddress);
 
             ToTable("Suppliers");
-
         }
     }
 }

@@ -47,6 +47,7 @@
     <Compile Include="Common\IUser.cs" />
     <Compile Include="Common\IErpContext.cs" />
     <Compile Include="Entities\Common\Address.cs" />
+    <Compile Include="Entities\Common\AuditableBase.cs" />
     <Compile Include="Entities\Common\AuditableOrganizationEntity.cs" />
     <Compile Include="Entities\Common\AuditableEntity.cs" />
     <Compile Include="Entities\Organizations\Organization.cs" />

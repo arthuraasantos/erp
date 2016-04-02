@@ -8,9 +8,10 @@ namespace ERP.Infrastructure.Data.Mapping
     {
         public PricePlanDbMapping()
         {
-            ToTable("PricePlans");
             Property(p => p.Id).HasColumnName("PricePlanId");
             Property(p => p.Description).HasColumnName("Description");
+
+            ToTable("PricePlans");
         }
     }
 }
