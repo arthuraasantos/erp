@@ -20,7 +20,6 @@ namespace ERP.Domain.Entities.Suppliers
 
         public Address Address { get; set; }
         public Address FinancialAddress { get; set; }
-        public virtual Organization Organization { get; set; }
 
         public bool IsValid(Supplier entity) => SupplierService.IsValid(this);
 

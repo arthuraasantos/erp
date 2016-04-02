@@ -1,13 +1,11 @@
 ﻿using System;
+using ERP.Domain.Entities.Organizations;
 
 namespace ERP.Domain.Entities.Common
 {
-    public abstract class AuditableOrganizationEntity
+    public abstract class AuditableOrganizationEntity: AuditableBase
     {
-        public Guid Id { get; set; }
         public Guid OrganizationId { get; set; }
-        public DateTime CreateDate { get; set; }
-        public DateTime? UpdateDate { get; set; }
-        public DateTime? DeleteDate { get; set; }
+        public virtual Organization Organization { get; set; }
     }
 }

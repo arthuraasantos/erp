@@ -1,19 +1,15 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.Infrastructure.Annotations;
-using System.Data.Entity.ModelConfiguration;
 using ERP.Domain.Entities.Suppliers;
+using ERP.Infrastructure.Data.Mapping.Base;
 
 namespace ERP.Infrastructure.Data.Mapping
 {
-    public class SupplierDbMapping: EntityTypeConfiguration<Supplier>
+    internal class SupplierDbMapping: OrganizationEntityDbMapping<Supplier>
     {
         public SupplierDbMapping()
         {
-            ToTable("Suppliers");
-
-            HasKey(s => s.Id);
-            HasRequired(s => s.Organization);
-
+            Property(p => p.Id).HasColumnName("SupplierId");
             Property(s => s.Name).HasColumnName("Name").HasMaxLength(100);
             Property(s => s.CpfCnpj)
                 .HasColumnAnnotation("IndexCpfCnpj", new IndexAnnotation(new IndexAttribute() {IsUnique = true}));
@@ -21,7 +17,7 @@ namespace ERP.Infrastructure.Data.Mapping
             Ignore(p => p.Address);
             Ignore(p => p.FinancialAddress);
 
-            
+            ToTable("Suppliers");
         }
     }
 }
