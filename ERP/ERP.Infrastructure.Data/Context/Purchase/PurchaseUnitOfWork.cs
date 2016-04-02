@@ -21,7 +21,6 @@ namespace ERP.Infrastructure.Data.Context.Purchase
         public PurchaseUnitOfWork()
             :base("DbErp")
         {
-            var ensureDllIsCopied = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
             Id = Guid.NewGuid();
             //User = user;
             //Licence = Licence;
@@ -41,7 +40,6 @@ namespace ERP.Infrastructure.Data.Context.Purchase
         {
             #region Remoção de convenções 
 
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 
@@ -59,6 +57,10 @@ namespace ERP.Infrastructure.Data.Context.Purchase
             #region Mapeamento de tabelas do banco
 
             modelBuilder.Configurations.Add(new SupplierDbMapping());
+            modelBuilder.Configurations.Add(new PricePlanDbMapping());
+            modelBuilder.Configurations.Add(new ProductDbMapping());
+            modelBuilder.Configurations.Add(new StockDbMapping());
+            modelBuilder.Configurations.Add(new SectionDbMapping());
 
             #endregion
 

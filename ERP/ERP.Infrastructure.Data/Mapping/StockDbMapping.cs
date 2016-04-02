@@ -7,7 +7,7 @@ namespace ERP.Infrastructure.Data.Mapping
     {
         public StockDbMapping()
         {
-            HasKey(p => p.Id);
+            Property(p => p.Id).HasColumnName("StockId");
             Property(p => p.Description).HasColumnName("Description");
 
             ToTable("Stocks");

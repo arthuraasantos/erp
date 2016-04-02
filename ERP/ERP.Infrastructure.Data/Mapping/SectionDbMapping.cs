@@ -7,8 +7,7 @@ namespace ERP.Infrastructure.Data.Mapping
     {
         public SectionDbMapping()
         {
-            HasKey(p => p.Id);
-
+            Property(p => p.Id).HasColumnName("SectionId");
             Property(p => p.Description).HasColumnName("Description");
             Property(p => p.Location).HasColumnName("Location");
 

@@ -1,4 +1,5 @@
-﻿using ERP.Domain.Entities.Products.PricePlans;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using ERP.Domain.Entities.Products.PricePlans;
 using ERP.Infrastructure.Data.Mapping.Base;
 
 namespace ERP.Infrastructure.Data.Mapping
@@ -7,10 +8,9 @@ namespace ERP.Infrastructure.Data.Mapping
     {
         public PricePlanDbMapping()
         {
+            ToTable("PricePlans");
             Property(p => p.Id).HasColumnName("PricePlanId");
             Property(p => p.Description).HasColumnName("Description");
-             Tem que aparecer o nome do Id na tabela direitinho !! 
-            ToTable("PricePlans");
         }
     }
 }

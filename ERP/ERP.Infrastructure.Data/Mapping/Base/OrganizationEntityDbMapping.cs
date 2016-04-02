@@ -8,7 +8,7 @@ namespace ERP.Infrastructure.Data.Mapping.Base
     {
         public OrganizationEntityDbMapping()
         {
-            Property(p => p.Id).IsRequired();
+            HasKey(p => p.Id);
             Property(p => p.CreateDate).IsRequired();
             Property(p => p.UpdateDate);
             Property(p => p.DeleteDate);
