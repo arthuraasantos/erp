@@ -71,6 +71,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PurchaseMigrations\Configuration.cs" />
     <Compile Include="Repositories\Base\RepositoryBase.cs" />
+    <Compile Include="Repositories\Organizations\OrganizationRepository.cs" />
     <Compile Include="Repositories\Products\PricePlans\PricePlanRepository.cs" />
     <Compile Include="Repositories\Products\ProductRepository.cs" />
     <Compile Include="Repositories\Products\Sections\SectionRepository.cs" />

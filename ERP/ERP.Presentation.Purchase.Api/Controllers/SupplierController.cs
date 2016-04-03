@@ -10,8 +10,8 @@ namespace ERP.Presentation.Purchase.Api.Controllers
 {
     public class SupplierController : ApiController
     {
-        private readonly ISupplierAppService _supplierService;
-        public SupplierController(ISupplierAppService supplierService)
+        private readonly ISupplierService _supplierService;
+        public SupplierController(ISupplierService supplierService)
         {
             _supplierService = supplierService;
         }

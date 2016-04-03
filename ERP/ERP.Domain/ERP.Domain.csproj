@@ -58,6 +58,7 @@
     <Compile Include="Entities\Products\Stocks\StockProduct.cs" />
     <Compile Include="Entities\Suppliers\Supplier.cs" />
     <Compile Include="Interfaces\Base\IRepositoryBase.cs" />
+    <Compile Include="Interfaces\Organizations\IOrganizationRepository.cs" />
     <Compile Include="Interfaces\Products\IProductRepository.cs" />
     <Compile Include="Interfaces\Products\PricePlans\IPricePlanRepository.cs" />
     <Compile Include="Interfaces\Products\Sections\ISectionRepository.cs" />

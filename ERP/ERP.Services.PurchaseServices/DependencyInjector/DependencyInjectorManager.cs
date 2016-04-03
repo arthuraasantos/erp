@@ -41,7 +41,7 @@ namespace ERP.Services.PurchaseServices.DependencyInjector
 
         private static void RegisterServices(Container container)
         {
-            container.Register<ISupplierAppService, SupplierAppService>();
+            container.Register<ISupplierService, SupplierService>();
         }
     }
 }

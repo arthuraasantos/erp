@@ -6,12 +6,12 @@ using ERP.Services.PurchaseServices.Interfaces;
 
 namespace ERP.Services.PurchaseServices.Services.Suppliers
 {
-    public class SupplierAppService : ISupplierAppService
+    public class SupplierService : ISupplierService
     {
         private readonly ISupplierRepository _supplierRepository;
         private readonly SupplierNewDtoConverterOrganizationEntity _supplierConverterOrganizationEntity;
 
-        public SupplierAppService(ISupplierRepository supplierRepository)
+        public SupplierService(ISupplierRepository supplierRepository)
         {
             _supplierRepository = supplierRepository;
             _supplierConverterOrganizationEntity = new SupplierNewDtoConverterOrganizationEntity();

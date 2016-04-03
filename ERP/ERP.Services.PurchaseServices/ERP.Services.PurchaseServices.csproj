@@ -53,15 +53,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\Address\ConverterAddressDtoToDomain.cs" />
+    <Compile Include="Converters\Organizations\ConverterOrganizationEditDtoToDomain.cs" />
+    <Compile Include="Converters\Organizations\ConverterOrganizationDtoToDomain.cs" />
+    <Compile Include="Converters\Organizations\ConverterOrganizationNewDtoToDomain.cs" />
     <Compile Include="Converters\Suppliers\SupplierNewDtoConverterOrganizationEntity.cs" />
     <Compile Include="DependencyInjector\DependencyInjectorManager.cs" />
     <Compile Include="Dtos\Common\AddressDto.cs" />
+    <Compile Include="Dtos\Organization\OrganizationDto.cs" />
+    <Compile Include="Dtos\Organization\OrganizationEditDto.cs" />
+    <Compile Include="Dtos\Organization\OrganizationNewDto.cs" />
     <Compile Include="Dtos\Supplier\SupplierDto.cs" />
     <Compile Include="Dtos\Supplier\SupplierEditDto.cs" />
     <Compile Include="Dtos\Supplier\SupplierNewDto.cs" />
-    <Compile Include="Interfaces\ISupplierAppService.cs" />
+    <Compile Include="Interfaces\IPricePlanService.cs" />
+    <Compile Include="Interfaces\IProductService.cs" />
+    <Compile Include="Interfaces\IStockService.cs" />
+    <Compile Include="Interfaces\ISectionService.cs" />
+    <Compile Include="Interfaces\IOrganizationService.cs" />
+    <Compile Include="Interfaces\IStockProductService.cs" />
+    <Compile Include="Interfaces\ISupplierService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Suppliers\SupplierAppService.cs" />
+    <Compile Include="Services\Organizations\OrganizationService.cs" />
+    <Compile Include="Services\Suppliers\SupplierService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
