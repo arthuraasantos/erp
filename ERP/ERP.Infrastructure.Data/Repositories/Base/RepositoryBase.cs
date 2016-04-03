@@ -12,7 +12,7 @@ using ERP.Infrastructure.Data.Context.Purchase;
 namespace ERP.Infrastructure.Data.Repositories.Base
 {
     public class RepositoryBase<T>: IRepositoryBase<T>
-        where T: AuditableOrganizationEntity
+        where T: AuditableBase
     {
         protected PurchaseUnitOfWork Uow { get; set; }
         protected IDbConnection Dapper { get; set; }
@@ -37,6 +37,7 @@ namespace ERP.Infrastructure.Data.Repositories.Base
                 entity.DeleteDate = DateTime.Today;
                 Uow.Entry(entity).State = EntityState.Modified;
 
+                Execute();
                 return entity;
             }
             catch (Exception)
@@ -56,6 +57,7 @@ namespace ERP.Infrastructure.Data.Repositories.Base
             var set = Uow.Set<T>();
             Uow.Entry<T>(entity).State = set.Local.Any(e => e == entity) ? EntityState.Modified : EntityState.Added;
 
+            Execute();
             return entity;
         }
 

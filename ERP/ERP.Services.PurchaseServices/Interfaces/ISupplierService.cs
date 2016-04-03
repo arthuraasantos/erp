@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace ERP.Services.PurchaseServices.Interfaces
 {
-    public interface ISupplierAppService
+    public interface ISupplierService
     {
         Guid CreateSupplier(SupplierNewDto newSupplier, Guid organizationId);
         IEnumerable<SupplierDto> GetAll();
