@@ -2,6 +2,7 @@
 using ERP.Crosscut.Converters;
 using ERP.Domain.Entities.Suppliers;
 using ERP.Services.PurchaseServices.Dtos.Supplier;
+using ERP.Services.PurchaseServices.Converters.Address;
 
 namespace ERP.Services.PurchaseServices.Converters.Suppliers
 {
@@ -11,7 +12,8 @@ namespace ERP.Services.PurchaseServices.Converters.Suppliers
         {
             if (destiny == null) destiny = new SupplierDto();
             destiny.Id = origin.Id;
-            //destiny.Address = origin.Address;
+            destiny.Address = ConverterAddressDtoToDomain.Convert(origin.Address, null);
+            destiny.FinancialAddress = ConverterAddressDtoToDomain.Convert(origin.FinancialAddress, null);
             destiny.CityRegistration = origin.CityRegistration;
             destiny.Comments = origin.Comments;
             destiny.ContactPeople = origin.ContactPeople;
@@ -21,7 +23,6 @@ namespace ERP.Services.PurchaseServices.Converters.Suppliers
                 destiny.FantasyName = origin.Name;
             else
                 destiny.Name = origin.Name;
-            //destiny.FinancialAddress = origin.FinancialAddress;
             destiny.IsCompany = origin.IsCompany;
             destiny.OrganizationId = origin.OrganizationId;
             destiny.Phone = origin.Phone;

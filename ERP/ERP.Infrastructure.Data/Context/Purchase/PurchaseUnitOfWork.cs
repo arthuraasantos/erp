@@ -25,6 +25,7 @@ namespace ERP.Infrastructure.Data.Context.Purchase
         public PurchaseUnitOfWork()
             :base("DbErp")
         {
+            var ensureDllIsCopied = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
             Id = Guid.NewGuid();
             //User = user;
             //Licence = Licence;

@@ -17,6 +17,7 @@ namespace ERP.Presentation.Purchase.Api.Controllers
         }
 
         // GET: api/Supplier
+        [Route("suppliers")]
         public IEnumerable<SupplierDto> Get()
         {
             var suppliers = _supplierService.GetAll();

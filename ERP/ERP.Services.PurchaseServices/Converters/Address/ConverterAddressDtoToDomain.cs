@@ -22,13 +22,20 @@ namespace ERP.Services.PurchaseServices.Converters.Address
 
         public static AddressDto Convert(Domain.Entities.Common.Address origin, AddressDto destiny)
         {
-            destiny.AddressLine = origin.AddressLine;
-            destiny.Adjunct = origin.Adjunct;
-            destiny.City = origin.City;
-            destiny.District = origin.District;
-            destiny.Number = origin.Number;
-            destiny.State = origin.State;
-            destiny.ZipCode = origin.ZipCode;
+            if (origin == null) return null;
+            var address = new AddressDto()
+            {
+                AddressLine = origin.AddressLine,
+                Adjunct = origin.Adjunct,
+                City = origin.City,
+                District = origin.District,
+                Number = origin.Number,
+                State = origin.State,
+                ZipCode = origin.ZipCode
+            };
+
+            destiny = address;
+
             return destiny;
         }
     }
