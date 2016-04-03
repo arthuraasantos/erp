@@ -5,6 +5,7 @@ namespace ERP.Services.PurchaseServices.Dtos.Supplier
 {
     public class SupplierDto
     {
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string CpfCnpj { get; set; }
         public string RegistrationName { get; set; }
@@ -19,6 +20,5 @@ namespace ERP.Services.PurchaseServices.Dtos.Supplier
         public string Comments { get; set; }
         public bool IsCompany { get; set; }
         public Guid OrganizationId { get; set; }
-
     }
 }

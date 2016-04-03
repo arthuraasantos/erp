@@ -17,21 +17,23 @@ namespace ERP.Presentation.Purchase.Api.Controllers
         }
 
         // GET: api/Supplier
-        public IEnumerable<string> Get()
+        public IEnumerable<SupplierDto> Get()
         {
-            return new string[] { "value1", "value2" };
+            var suppliers = _supplierService.GetAll();
+            return suppliers;
         }
 
         // GET: api/Supplier/5
-        public string Get(int id)
+        public SupplierDto Get(Guid id)
         {
-            return "value";
+            var supplierDto = _supplierService.GetById(id);
+            return supplierDto;
         }
 
         // POST: api/Supplier
         [HttpPost]
         [Route("suppliers")]
-        public HttpResponseMessage Post([FromBody] SupplierNewDto newSupplier, Guid organizationId) 
+        public HttpResponseMessage Post([FromBody] SupplierNewDto newSupplier, Guid organizationId)
         {
             try
             {
@@ -45,13 +47,15 @@ namespace ERP.Presentation.Purchase.Api.Controllers
         }
 
         // PUT: api/Supplier/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody] SupplierEditDto supplierEditDto)
         {
+            _supplierService.Update(supplierEditDto);
         }
 
         // DELETE: api/Supplier/5
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
+            _supplierService.Delete(id);
         }
     }
 }
