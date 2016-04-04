@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.Infrastructure.Annotations;
+using ERP.Domain.Entities.Products;
 using ERP.Domain.Entities.Suppliers;
 using ERP.Infrastructure.Data.Mapping.Base;
 
@@ -13,6 +14,15 @@ namespace ERP.Infrastructure.Data.Mapping
             Property(s => s.Name).HasColumnName("Name").HasMaxLength(100);
             Property(s => s.CpfCnpj)
                 .HasColumnAnnotation("IndexCpfCnpj", new IndexAnnotation(new IndexAttribute() {IsUnique = true}));
+
+            HasMany(p => p.Products)
+                .WithMany(c => c.Suppliers)
+                .Map(m =>
+                        {
+                            m.MapLeftKey("SupplierId");
+                            m.MapRightKey("ProductId");
+                            m.ToTable("SupplierProducts");
+                        });
 
             Property(p => p.Address.AddressLine).HasColumnName("AddressLine");
             Property(p => p.Address.Number).HasColumnName("Number");

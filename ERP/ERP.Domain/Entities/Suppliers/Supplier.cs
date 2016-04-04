@@ -1,5 +1,8 @@
-﻿using ERP.Domain.Entities.Common;
+﻿using System.Collections.Generic;
+using System.Net;
+using ERP.Domain.Entities.Common;
 using ERP.Domain.Entities.Organizations;
+using ERP.Domain.Entities.Products;
 using ERP.Domain.Services.Suppliers;
 
 namespace ERP.Domain.Entities.Suppliers
@@ -20,6 +23,7 @@ namespace ERP.Domain.Entities.Suppliers
 
         public Address Address { get; set; }
         public Address FinancialAddress { get; set; }
+        public virtual List<Product> Products { get; set; }
 
         public bool IsValid(Supplier entity) => SupplierService.IsValid(this);
 
