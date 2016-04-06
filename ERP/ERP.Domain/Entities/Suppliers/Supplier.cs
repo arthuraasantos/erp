@@ -19,16 +19,15 @@ namespace ERP.Domain.Entities.Suppliers
         public string CityRegistration { get; set; }
         public string StateRegistration { get; set; }
         public string Comments { get; set; }
-        public bool IsCompany { get; set; }
 
         public Address Address { get; set; }
         public Address FinancialAddress { get; set; }
         public virtual List<Product> Products { get; set; }
 
-        public bool IsValid(Supplier entity) => SupplierService.IsValid(this);
+        public bool IsValid() => SupplierService.IsValid(this);
 
         public bool IsActive() => SupplierService.IsActive(this);
 
-        public bool CheckCompany() => CpfCnpj.ToString().Length > 11;
+        public bool IsCompany() => CpfCnpj.Length > 11;
     }
 }

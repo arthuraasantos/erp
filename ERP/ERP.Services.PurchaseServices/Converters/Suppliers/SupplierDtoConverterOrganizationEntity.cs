@@ -19,11 +19,11 @@ namespace ERP.Services.PurchaseServices.Converters.Suppliers
             destiny.ContactPeople = origin.ContactPeople;
             destiny.CpfCnpj = origin.CpfCnpj;
             destiny.Email = origin.Email;
-            if (origin.CheckCompany())
+            if (origin.IsCompany())
                 destiny.FantasyName = origin.Name;
             else
                 destiny.Name = origin.Name;
-            destiny.IsCompany = origin.IsCompany;
+            
             destiny.OrganizationId = origin.OrganizationId;
             destiny.Phone = origin.Phone;
             destiny.RegistrationName = origin.RegistrationName;

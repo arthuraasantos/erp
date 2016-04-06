@@ -14,7 +14,7 @@ namespace ERP.Services.PurchaseServices.Converters.Suppliers
             destiny.OrganizationId = origin.OrganizationId;
             destiny.CpfCnpj = origin.CpfCnpj;
             destiny.Email = origin.Email;
-            if (destiny.CheckCompany())
+            if (destiny.IsCompany())
                 destiny.FantasyName = origin.Name;
             else 
                 destiny.Name = origin.Name;
