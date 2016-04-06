@@ -2,8 +2,9 @@
 using System.Runtime.Remoting.Messaging;
 using ERP.Domain.Interfaces.Organizations;
 using ERP.Services.PurchaseServices.Converters.Organizations;
-using ERP.Services.PurchaseServices.Dtos.Organization;
+using ERP.Services.PurchaseServices.Dtos.Organizations;
 using ERP.Services.PurchaseServices.Interfaces;
+using ERP.Services.PurchaseServices.Interfaces.Organizations;
 
 namespace ERP.Services.PurchaseServices.Services.Organizations
 {

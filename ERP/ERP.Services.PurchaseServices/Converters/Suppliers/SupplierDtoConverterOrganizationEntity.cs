@@ -1,8 +1,8 @@
 ﻿using System;
 using ERP.Crosscut.Converters;
 using ERP.Domain.Entities.Suppliers;
-using ERP.Services.PurchaseServices.Dtos.Supplier;
 using ERP.Services.PurchaseServices.Converters.Address;
+using ERP.Services.PurchaseServices.Dtos.Suppliers;
 
 namespace ERP.Services.PurchaseServices.Converters.Suppliers
 {

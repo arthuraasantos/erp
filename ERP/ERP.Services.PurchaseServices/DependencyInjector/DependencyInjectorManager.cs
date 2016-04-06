@@ -2,7 +2,7 @@
 using ERP.Domain.Interfaces.Suppliers;
 using ERP.Infrastructure.Data.Context.Purchase;
 using ERP.Infrastructure.Data.Repositories.Suppliers;
-using ERP.Services.PurchaseServices.Interfaces;
+using ERP.Services.PurchaseServices.Interfaces.Suppliers;
 using ERP.Services.PurchaseServices.Services.Suppliers;
 using SimpleInjector;
 

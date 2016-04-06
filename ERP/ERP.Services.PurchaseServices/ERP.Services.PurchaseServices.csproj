@@ -61,19 +61,45 @@
     <Compile Include="Converters\Suppliers\SupplierNewDtoConverterOrganizationEntity.cs" />
     <Compile Include="DependencyInjector\DependencyInjectorManager.cs" />
     <Compile Include="Dtos\Common\AddressDto.cs" />
-    <Compile Include="Dtos\Organization\OrganizationDto.cs" />
-    <Compile Include="Dtos\Organization\OrganizationEditDto.cs" />
-    <Compile Include="Dtos\Organization\OrganizationNewDto.cs" />
-    <Compile Include="Dtos\Supplier\SupplierDto.cs" />
-    <Compile Include="Dtos\Supplier\SupplierEditDto.cs" />
-    <Compile Include="Dtos\Supplier\SupplierNewDto.cs" />
-    <Compile Include="Interfaces\IPricePlanService.cs" />
-    <Compile Include="Interfaces\IProductService.cs" />
-    <Compile Include="Interfaces\IStockService.cs" />
-    <Compile Include="Interfaces\ISectionService.cs" />
-    <Compile Include="Interfaces\IOrganizationService.cs" />
-    <Compile Include="Interfaces\IStockProductService.cs" />
-    <Compile Include="Interfaces\ISupplierService.cs" />
+    <Compile Include="Dtos\Configurations\ConfigurationDto.cs" />
+    <Compile Include="Dtos\Configurations\ConfigurationEditDto.cs" />
+    <Compile Include="Dtos\Configurations\ConfigurationNewDto.cs" />
+    <Compile Include="Dtos\Organizations\OrganizationDto.cs" />
+    <Compile Include="Dtos\Organizations\OrganizationEditDto.cs" />
+    <Compile Include="Dtos\Organizations\OrganizationNewDto.cs" />
+    <Compile Include="Dtos\PricePlan\PricePlanDto.cs" />
+    <Compile Include="Dtos\PricePlan\PricePlanEditDto.cs" />
+    <Compile Include="Dtos\PricePlan\PricePlanNewDto.cs" />
+    <Compile Include="Dtos\Products\ProductDto.cs" />
+    <Compile Include="Dtos\Products\ProductEditDto.cs" />
+    <Compile Include="Dtos\Products\ProductNewDto.cs" />
+    <Compile Include="Dtos\PurchaseProducts\PurchaseProductDto.cs" />
+    <Compile Include="Dtos\PurchaseProducts\PurchaseProductEditDto.cs" />
+    <Compile Include="Dtos\PurchaseProducts\PurchaseProductNewDto.cs" />
+    <Compile Include="Dtos\Purchases\PurchaseDto.cs" />
+    <Compile Include="Dtos\Purchases\PurchaseEditDto.cs" />
+    <Compile Include="Dtos\Purchases\PurchaseNewDto.cs" />
+    <Compile Include="Dtos\Sections\SectionDto.cs" />
+    <Compile Include="Dtos\Sections\SectionEditDto.cs" />
+    <Compile Include="Dtos\Sections\SectionNewDto.cs" />
+    <Compile Include="Dtos\StockProducts\StockProductDto.cs" />
+    <Compile Include="Dtos\StockProducts\StockProductEditDto.cs" />
+    <Compile Include="Dtos\StockProducts\StockProductNewDto.cs" />
+    <Compile Include="Dtos\Stocks\StockDto.cs" />
+    <Compile Include="Dtos\Stocks\StockEditDto.cs" />
+    <Compile Include="Dtos\Stocks\StockNewDto.cs" />
+    <Compile Include="Dtos\Suppliers\SupplierDto.cs" />
+    <Compile Include="Dtos\Suppliers\SupplierEditDto.cs" />
+    <Compile Include="Dtos\Suppliers\SupplierNewDto.cs" />
+    <Compile Include="Interfaces\Products\PricePlans\IPricePlanService.cs" />
+    <Compile Include="Interfaces\Products\IProductService.cs" />
+    <Compile Include="Interfaces\Products\Stocks\IStockService.cs" />
+    <Compile Include="Interfaces\Products\Sections\ISectionService.cs" />
+    <Compile Include="Interfaces\Organizations\IOrganizationService.cs" />
+    <Compile Include="Interfaces\Products\Stocks\IStockProductService.cs" />
+    <Compile Include="Interfaces\Purchases\IPurchaseProductService.cs" />
+    <Compile Include="Interfaces\Purchases\IPurchaseService.cs" />
+    <Compile Include="Interfaces\Suppliers\ISupplierService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Organizations\OrganizationService.cs" />
     <Compile Include="Services\Suppliers\SupplierService.cs" />
@@ -96,6 +122,7 @@
       <Name>ERP.Infrastructure.Data</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

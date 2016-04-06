@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ERP.Services.PurchaseServices.Dtos.Supplier
+namespace ERP.Services.PurchaseServices.Dtos.Suppliers
 {
     public class SupplierNewDto
     {

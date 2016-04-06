@@ -3,7 +3,7 @@ using ERP.Crosscut.Converters;
 using ERP.Domain.Entities.Common;
 using ERP.Domain.Entities.Organizations;
 using ERP.Services.PurchaseServices.Converters.Address;
-using ERP.Services.PurchaseServices.Dtos.Organization;
+using ERP.Services.PurchaseServices.Dtos.Organizations;
 
 namespace ERP.Services.PurchaseServices.Converters.Organizations
 {

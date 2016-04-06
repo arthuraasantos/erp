@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using ERP.Domain.Interfaces.Suppliers;
 using ERP.Services.PurchaseServices.Converters.Suppliers;
-using ERP.Services.PurchaseServices.Dtos.Supplier;
+using ERP.Services.PurchaseServices.Dtos.Suppliers;
 using ERP.Services.PurchaseServices.Interfaces;
+using ERP.Services.PurchaseServices.Interfaces.Suppliers;
 
 namespace ERP.Services.PurchaseServices.Services.Suppliers
 {
@@ -20,7 +21,7 @@ namespace ERP.Services.PurchaseServices.Services.Suppliers
             _supplierDtoConverterOrganizationEntity = new SupplierDtoConverterOrganizationEntity();
         }
 
-        public Guid CreateSupplier(SupplierNewDto newSupplier, Guid organizationId)
+        public Guid Create(SupplierNewDto newSupplier, Guid organizationId)
         {
             try
             {

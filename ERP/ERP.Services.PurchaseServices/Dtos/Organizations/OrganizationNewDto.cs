@@ -1,4 +1,4 @@
-﻿namespace ERP.Services.PurchaseServices.Dtos.Organization
+﻿namespace ERP.Services.PurchaseServices.Dtos.Organizations
 {
     public class OrganizationNewDto
     {

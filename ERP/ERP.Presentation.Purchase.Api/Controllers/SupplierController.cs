@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using ERP.Services.PurchaseServices.Dtos.Supplier;
+using ERP.Services.PurchaseServices.Dtos.Suppliers;
 using ERP.Services.PurchaseServices.Interfaces;
+using ERP.Services.PurchaseServices.Interfaces.Suppliers;
 
 namespace ERP.Presentation.Purchase.Api.Controllers
 {
@@ -38,7 +39,7 @@ namespace ERP.Presentation.Purchase.Api.Controllers
         {
             try
             {
-                var result = _supplierService.CreateSupplier(newSupplier, organizationId);
+                var result = _supplierService.Create(newSupplier, organizationId);
                 return Request.CreateResponse(HttpStatusCode.OK, $"ID :{result}");
             }
             catch (Exception)

@@ -1,7 +1,7 @@
 ﻿using System;
 using ERP.Services.PurchaseServices.Dtos.Common;
 
-namespace ERP.Services.PurchaseServices.Dtos.Supplier
+namespace ERP.Services.PurchaseServices.Dtos.Suppliers
 {
     public class SupplierDto
     {

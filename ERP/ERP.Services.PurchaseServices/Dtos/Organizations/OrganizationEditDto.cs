@@ -1,7 +1,7 @@
 ﻿using System;
 using ERP.Services.PurchaseServices.Dtos.Common;
 
-namespace ERP.Services.PurchaseServices.Dtos.Organization
+namespace ERP.Services.PurchaseServices.Dtos.Organizations
 {
     public class OrganizationEditDto
     {

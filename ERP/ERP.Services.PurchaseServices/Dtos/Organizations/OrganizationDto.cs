@@ -1,9 +1,11 @@
-﻿using ERP.Services.PurchaseServices.Dtos.Common;
+﻿using System;
+using ERP.Services.PurchaseServices.Dtos.Common;
 
-namespace ERP.Services.PurchaseServices.Dtos.Organization
+namespace ERP.Services.PurchaseServices.Dtos.Organizations
 {
     public class OrganizationDto
     {
+        public Guid OrganizationId { get; set; }
         public string Description { get; set; }
         public string Name { get; set; }
         public string RegistrationName { get; set; }
