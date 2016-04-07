@@ -27,8 +27,8 @@ namespace ERP.Services.PurchaseServices.Services.Suppliers
             {
                 if (!IsValidNewSupplier(newSupplier)) throw new ArgumentNullException($"Um campo obrigatório não foi preenchido");
 
+                newSupplier.OrganizationId = organizationId;
                 var supplier = _supplierNewDtoConverterOrganizationEntity.Convert(newSupplier, null);
-                supplier.OrganizationId = organizationId;
                 _supplierRepository.Save(supplier);
                 _supplierRepository.Execute();
 
@@ -44,7 +44,7 @@ namespace ERP.Services.PurchaseServices.Services.Suppliers
         private static bool IsValidNewSupplier(SupplierNewDto supplierNewDto)
         {
             return
-                !string.IsNullOrWhiteSpace(supplierNewDto.CpfCnpj.ToString()) &&
+                !string.IsNullOrWhiteSpace(supplierNewDto.CpfCnpj) &&
                 !string.IsNullOrWhiteSpace(supplierNewDto.Name) &&
                 !string.IsNullOrWhiteSpace(supplierNewDto.Email);
         }

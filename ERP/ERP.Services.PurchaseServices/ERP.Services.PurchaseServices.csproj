@@ -53,6 +53,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\Products\PricePlans\PricePlanDtoConverterOrganizationEntity.cs" />
+    <Compile Include="Converters\Products\PricePlans\PricePlanEditDtoConverterOrganizationEntity.cs" />
+    <Compile Include="Converters\Products\PricePlans\PricePlanNewDtoConverterOrganizationEntity.cs" />
+    <Compile Include="Converters\Products\ProductDtoConverterOrganizationEntity.cs" />
+    <Compile Include="Converters\Products\ProductEditDtoConverterOrganizationEntity.cs" />
+    <Compile Include="Converters\Products\ProductNewDtoConverterOrganizationEntity.cs" />
+    <Compile Include="Converters\Products\Sections\SectionDtoConverterOrganizationEntity.cs" />
+    <Compile Include="Converters\Products\Sections\SectionEditDtoConverterOrganizationEntity.cs" />
+    <Compile Include="Converters\Products\Sections\SectionNewDtoConverterOrganizationEntity.cs" />
+    <Compile Include="Converters\Products\StockProducts\StockProductEditDtoConverterOrganizationEntity.cs" />
+    <Compile Include="Converters\Products\StockProducts\StockProductNewDtoConverterOrganizationEntity.cs" />
+    <Compile Include="Converters\Products\StockProducts\StockProductDtoConverterOrganizationEntity.cs" />
+    <Compile Include="Converters\Products\Stocks\StockNewDtoConverterOrganizationEntity.cs" />
+    <Compile Include="Converters\Products\Stocks\StockEditDtoConverterOrganizationEntity.cs" />
+    <Compile Include="Converters\Products\Stocks\StockDtoConverterOrganizationEntity.cs" />
+    <Compile Include="Converters\Purchases\PurchaseEditDtoConverterOrganizationEntity.cs" />
+    <Compile Include="Converters\Purchases\PurchaseNewDtoConverterOrganizationEntity.cs" />
+    <Compile Include="Converters\Purchases\PurchaseDtoConverterOrganizationEntity.cs" />
+    <Compile Include="Converters\Purchases\PurchaseProducts\PurchaseProductDtoConverterOrganizationEntity.cs" />
+    <Compile Include="Converters\Purchases\PurchaseProducts\PurchaseProductNewDtoConverterOrganizationEntity.cs" />
+    <Compile Include="Converters\Purchases\PurchaseProducts\PurchaseProductEditDtoConverterOrganizationEntity.cs" />
     <Compile Include="Converters\Suppliers\SupplierDtoConverterOrganizationEntity.cs" />
     <Compile Include="Converters\Address\ConverterAddressDtoToDomain.cs" />
     <Compile Include="Converters\Organizations\ConverterOrganizationEditDtoToDomain.cs" />
@@ -67,9 +88,9 @@
     <Compile Include="Dtos\Organizations\OrganizationDto.cs" />
     <Compile Include="Dtos\Organizations\OrganizationEditDto.cs" />
     <Compile Include="Dtos\Organizations\OrganizationNewDto.cs" />
-    <Compile Include="Dtos\PricePlan\PricePlanDto.cs" />
-    <Compile Include="Dtos\PricePlan\PricePlanEditDto.cs" />
-    <Compile Include="Dtos\PricePlan\PricePlanNewDto.cs" />
+    <Compile Include="Dtos\PricePlans\PricePlanDto.cs" />
+    <Compile Include="Dtos\PricePlans\PricePlanEditDto.cs" />
+    <Compile Include="Dtos\PricePlans\PricePlanNewDto.cs" />
     <Compile Include="Dtos\Products\ProductDto.cs" />
     <Compile Include="Dtos\Products\ProductEditDto.cs" />
     <Compile Include="Dtos\Products\ProductNewDto.cs" />
@@ -102,6 +123,13 @@
     <Compile Include="Interfaces\Suppliers\ISupplierService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Organizations\OrganizationService.cs" />
+    <Compile Include="Services\Products\PricePlans\PricePlanService.cs" />
+    <Compile Include="Services\Products\ProductService.cs" />
+    <Compile Include="Services\Products\Sections\SectionService.cs" />
+    <Compile Include="Services\Products\Stocks\StockProductService.cs" />
+    <Compile Include="Services\Products\Stocks\StockService.cs" />
+    <Compile Include="Services\Purchases\PurchaseProductService.cs" />
+    <Compile Include="Services\Purchases\PurchaseService.cs" />
     <Compile Include="Services\Suppliers\SupplierService.cs" />
   </ItemGroup>
   <ItemGroup>

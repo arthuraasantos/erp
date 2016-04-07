@@ -1,5 +1,5 @@
 ﻿using System;
-using ERP.Services.PurchaseServices.Dtos.PricePlan;
+using ERP.Services.PurchaseServices.Dtos.PricePlans;
 
 namespace ERP.Services.PurchaseServices.Interfaces.Products.PricePlans
 {

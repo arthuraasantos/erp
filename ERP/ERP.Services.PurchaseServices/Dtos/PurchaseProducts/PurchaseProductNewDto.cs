@@ -9,6 +9,6 @@ namespace ERP.Services.PurchaseServices.Dtos.PurchaseProducts
         public Guid PurcharseId { get; set; }
 
         public double Quantity { get; set; }
-        public decimal? Value { get; set; }
+        public decimal Value { get; set; }
     }
 }

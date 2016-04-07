@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace ERP.Services.PurchaseServices.Dtos.PricePlan
+namespace ERP.Services.PurchaseServices.Dtos.PricePlans
 {
-    public class PricePlanEditDto
+    public class PricePlanDto
     {
         public Guid PricePlanId { get; set; }
         public Guid OrganizationId { get; set; }

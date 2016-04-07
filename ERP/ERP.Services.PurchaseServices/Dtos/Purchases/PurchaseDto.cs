@@ -7,6 +7,8 @@ namespace ERP.Services.PurchaseServices.Dtos.Purchases
 {
     public class PurchaseDto
     {
+        public Guid OrganizationId { get; set; }
+        public Guid PurchaseId { get; set; }
         public Guid SupplierId { get; set; }
         public Guid StockId { get; set; }
 
