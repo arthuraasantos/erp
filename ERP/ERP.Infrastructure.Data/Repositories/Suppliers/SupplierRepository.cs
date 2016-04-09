@@ -7,7 +7,7 @@ using ERP.Infrastructure.Data.Repositories.Base;
 
 namespace ERP.Infrastructure.Data.Repositories.Suppliers
 {
-    public class SupplierRepository: RepositoryBase<Supplier>,ISupplierRepository
+    public class SupplierRepository: RepositoryOrganizationBase<Supplier>,ISupplierRepository
     {
         public SupplierRepository(IPurchaseUnitOfWork uow) : base(uow)
         {

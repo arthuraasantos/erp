@@ -4,7 +4,7 @@ using ERP.Domain.Interfaces.Base;
 
 namespace ERP.Domain.Interfaces.Suppliers
 {
-    public interface ISupplierRepository : IRepositoryBase<Supplier>
+    public interface ISupplierRepository : IRepositoryOrganizationBase<Supplier>
     {
         List<Supplier> GetInactiveSuppliers();
     }

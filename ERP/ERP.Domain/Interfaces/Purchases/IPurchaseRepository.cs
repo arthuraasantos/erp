@@ -5,7 +5,7 @@ using ERP.Domain.Interfaces.Base;
 
 namespace ERP.Domain.Interfaces.Purchases
 {
-    public interface IPurchaseRepository: IRepositoryBase<Purchase>
+    public interface IPurchaseRepository: IRepositoryOrganizationBase<Purchase>
     {
         IEnumerable<Purchase> ActualMonth(Guid organizationId);
 

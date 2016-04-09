@@ -6,16 +6,16 @@ using ERP.Services.PurchaseServices.Interfaces.Purchases;
 
 namespace ERP.Services.PurchaseServices.Services.Purchases
 {
-    public class PurchaseService: IPurchaseService
+    public class PurchaseService: IPurchaseServiceOrganization
     {
-        private readonly IPurchaseRepository _purchaseRepository;
+        private readonly IPurchaseRepository _purchaseRepositoryOrganization;
         private readonly PurchaseNewDtoConverterOrganizationEntity _converterNewDto;
         private readonly PurchaseEditDtoConverterOrganizationEntity _converterEditDto;
         private readonly PurchaseDtoConverterOrganizationEntity _converterDto;
 
-        public PurchaseService(IPurchaseRepository purchaseRepository)
+        public PurchaseService(IPurchaseRepository purchaseRepositoryOrganization)
         {
-            _purchaseRepository = purchaseRepository;
+            _purchaseRepositoryOrganization = purchaseRepositoryOrganization;
             _converterEditDto = new PurchaseEditDtoConverterOrganizationEntity();
             _converterDto = new PurchaseDtoConverterOrganizationEntity();
             _converterNewDto = new PurchaseNewDtoConverterOrganizationEntity();
@@ -31,8 +31,8 @@ namespace ERP.Services.PurchaseServices.Services.Purchases
                 newPurchase.OrganizationId = organizationId;
                 var purchase = _converterNewDto.Convert(newPurchase, null);
 
-                _purchaseRepository.Save(purchase);
-                _purchaseRepository.Execute();
+                _purchaseRepositoryOrganization.Save(purchase);
+                _purchaseRepositoryOrganization.Execute();
 
                 return purchase.Id;
             }
@@ -43,11 +43,11 @@ namespace ERP.Services.PurchaseServices.Services.Purchases
             }
         }
 
-        public PurchaseDto Get(Guid id)
+        public PurchaseDto Get(Guid id, Guid organizationId)
         {
             try
             {
-                var purchase = _purchaseRepository.Get(id);
+                var purchase = _purchaseRepositoryOrganization.Get(id, organizationId);
                 var purchaseDto = _converterDto.Convert(purchase, null);
 
                 return purchaseDto;
@@ -58,13 +58,13 @@ namespace ERP.Services.PurchaseServices.Services.Purchases
             }
         }
 
-        public void Delete(Guid id)
+        public void Delete(Guid id, Guid organizationId)
         {
             try
             {
-                var purchase = _purchaseRepository.Get(id);
-                _purchaseRepository.Delete(purchase);
-                _purchaseRepository.Execute();
+                var purchase = _purchaseRepositoryOrganization.Get(id, organizationId);
+                _purchaseRepositoryOrganization.Delete(purchase);
+                _purchaseRepositoryOrganization.Execute();
             }
             catch (Exception ex)
             {
@@ -79,7 +79,7 @@ namespace ERP.Services.PurchaseServices.Services.Purchases
                 if (IsValidEditPurchase(editPurchase)) throw new ArgumentNullException($"Um campo obrigatório não foi preenchido");
 
                 var purchase = _converterEditDto.Convert(editPurchase, null);
-                _purchaseRepository.Save(purchase);
+                _purchaseRepositoryOrganization.Save(purchase);
             }
             catch (Exception ex)
             {

@@ -50,7 +50,6 @@
     <Compile Include="Entities\Common\AuditableBase.cs" />
     <Compile Include="Entities\Common\AuditableOrganizationEntity.cs" />
     <Compile Include="Entities\Common\AuditableEntity.cs" />
-    <Compile Include="Entities\Configurations\Configuration.cs" />
     <Compile Include="Entities\Organizations\Organization.cs" />
     <Compile Include="Entities\Products\PricePlans\PricePlan.cs" />
     <Compile Include="Entities\Products\Product.cs" />
@@ -61,7 +60,7 @@
     <Compile Include="Entities\Purchases\PurchaseProduct.cs" />
     <Compile Include="Entities\Suppliers\Supplier.cs" />
     <Compile Include="Interfaces\Base\IRepositoryBase.cs" />
-    <Compile Include="Interfaces\Configurations\IConfigurationRepository.cs" />
+    <Compile Include="Interfaces\Base\IRepositoryOrganizationBase.cs" />
     <Compile Include="Interfaces\Organizations\IOrganizationRepository.cs" />
     <Compile Include="Interfaces\Products\IProductRepository.cs" />
     <Compile Include="Interfaces\Products\PricePlans\IPricePlanRepository.cs" />

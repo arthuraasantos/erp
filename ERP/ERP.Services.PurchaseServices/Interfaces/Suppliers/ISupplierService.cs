@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using ERP.Services.PurchaseServices.Dtos.Suppliers;
+using ERP.Services.PurchaseServices.Interfaces.Base;
 
 namespace ERP.Services.PurchaseServices.Interfaces.Suppliers
 {
-    public interface ISupplierService
+    public interface ISupplierService : IServiceOrganizationBase<SupplierDto, SupplierNewDto, SupplierEditDto>
     {
-        Guid Create(SupplierNewDto newSupplier, Guid organizationId);
         IEnumerable<SupplierDto> GetAll();
-        SupplierDto GetById(Guid id);
-        void Delete(Guid id);
-        void Update(SupplierEditDto editSupplier);
     }
 }

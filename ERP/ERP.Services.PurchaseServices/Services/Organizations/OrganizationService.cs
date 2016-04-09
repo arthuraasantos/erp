@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Runtime.Remoting.Messaging;
 using ERP.Domain.Interfaces.Organizations;
 using ERP.Services.PurchaseServices.Converters.Organizations;
 using ERP.Services.PurchaseServices.Dtos.Organizations;
-using ERP.Services.PurchaseServices.Interfaces;
 using ERP.Services.PurchaseServices.Interfaces.Organizations;
 
 namespace ERP.Services.PurchaseServices.Services.Organizations
@@ -19,13 +17,9 @@ namespace ERP.Services.PurchaseServices.Services.Organizations
             _converterNewDto = converterNewDto;
         }
 
-        private bool Isvalid(OrganizationNewDto organization) => !string.IsNullOrWhiteSpace(organization.Name);
+        private static bool Isvalid(OrganizationNewDto organization) => !string.IsNullOrWhiteSpace(organization.Name);
 
-        private bool Isvalid(OrganizationDto organization)
-        {
-            //ToDo Não implementei ,porque ainda não sei qual informação vamos considerar como obrigatória.
-           throw  new  NotImplementedException("Não implementado ainda");
-        }
+        private static bool Isvalid(OrganizationDto organization) => !string.IsNullOrWhiteSpace(organization.Name);
 
         private bool Isvalid(OrganizationEditDto organization)
         {

@@ -5,7 +5,7 @@ using ERP.Infrastructure.Data.Repositories.Base;
 
 namespace ERP.Infrastructure.Data.Repositories.Products.PricePlans
 {
-    public class PricePlanRepository : RepositoryBase<PricePlan>, IPricePlanRepository
+    public class PricePlanRepository : RepositoryOrganizationBase<PricePlan>, IPricePlanRepository
     {
         public PricePlanRepository(IPurchaseUnitOfWork uow) : base(uow)
         {

@@ -1,13 +1,10 @@
-﻿using System;
-using ERP.Services.PurchaseServices.Dtos.PricePlans;
+﻿using ERP.Services.PurchaseServices.Dtos.PricePlans;
+using ERP.Services.PurchaseServices.Interfaces.Base;
 
 namespace ERP.Services.PurchaseServices.Interfaces.Products.PricePlans
 {
-    public interface IPricePlanService
+    public interface IPricePlanService : IServiceOrganizationBase<PricePlanDto, PricePlanNewDto, PricePlanEditDto>
     {
-        Guid Create(PricePlanNewDto newPricePlan, Guid organizationId);
-        PricePlanDto Get(Guid id);
-        void Delete(Guid id);
-        void Update(PricePlanEditDto editPricePlan);
+        
     }
 }

@@ -5,7 +5,7 @@ using ERP.Domain.Interfaces.Base;
 
 namespace ERP.Domain.Interfaces.Products
 {
-    public interface IProductRepository : IRepositoryBase<Product>
+    public interface IProductRepository : IRepositoryOrganizationBase<Product>
     {
         IEnumerable<Product> InStock(Guid organizationId);
     }

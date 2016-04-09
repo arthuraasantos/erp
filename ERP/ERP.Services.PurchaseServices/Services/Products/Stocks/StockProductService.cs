@@ -12,17 +12,17 @@ namespace ERP.Services.PurchaseServices.Services.Products.Stocks
 {
     public class StockProductService : IStockProductService
     {
-        private readonly IStockProductRepository _stockProductRepository;
+        private readonly IStockProductRepository _stockProductRepositoryOrganization;
         private readonly StockProductNewDtoConverterOrganizationEntity _converterStockProductNewDto;
         private readonly StockProductEditDtoConverterOrganizationEntity _converterStockProductEditDto;
         private readonly StockProductDtoConverterOrganizationEntity _converterStockProductDto;
 
-        public StockProductService(IStockProductRepository stockProductRepository)
+        public StockProductService(IStockProductRepository stockProductRepositoryOrganization)
         {
             _converterStockProductDto = new StockProductDtoConverterOrganizationEntity();
             _converterStockProductEditDto = new StockProductEditDtoConverterOrganizationEntity();
             _converterStockProductNewDto = new StockProductNewDtoConverterOrganizationEntity();
-            _stockProductRepository = stockProductRepository;
+            _stockProductRepositoryOrganization = stockProductRepositoryOrganization;
         }
 
         public Guid Create(StockProductNewDto newStockProduct, Guid organizationId)
@@ -33,8 +33,8 @@ namespace ERP.Services.PurchaseServices.Services.Products.Stocks
                 newStockProduct.OrganizationId = organizationId;
                 var stockProduct = _converterStockProductNewDto.Convert(newStockProduct, null);
 
-                _stockProductRepository.Save(stockProduct);
-                _stockProductRepository.Execute();
+                _stockProductRepositoryOrganization.Save(stockProduct);
+                _stockProductRepositoryOrganization.Execute();
 
                 return stockProduct.Id;
             }
@@ -46,11 +46,11 @@ namespace ERP.Services.PurchaseServices.Services.Products.Stocks
         }
 
 
-        public StockProductDto Get(Guid id)
+        public StockProductDto Get(Guid id, Guid organizationId)
         {
             try
             {
-                var stockProduct = _stockProductRepository.Get(id);
+                var stockProduct = _stockProductRepositoryOrganization.Get(id, organizationId);
                 var stockProductDto = _converterStockProductDto.Convert(stockProduct, null);
 
                 return stockProductDto;
@@ -61,13 +61,13 @@ namespace ERP.Services.PurchaseServices.Services.Products.Stocks
             }
         }
 
-        public void Delete(Guid id)
+        public void Delete(Guid id, Guid organizationId)
         {
             try
             {
-                var stockProduct = _stockProductRepository.Get(id);
-                _stockProductRepository.Delete(stockProduct);
-                _stockProductRepository.Execute();
+                var stockProduct = _stockProductRepositoryOrganization.Get(id, organizationId);
+                _stockProductRepositoryOrganization.Delete(stockProduct);
+                _stockProductRepositoryOrganization.Execute();
             }
             catch (Exception ex)
             {
@@ -82,7 +82,7 @@ namespace ERP.Services.PurchaseServices.Services.Products.Stocks
                 if (IsValidEditStockProduct(editStockProduct)) throw new ArgumentNullException($"Um campo obrigatório não foi preenchido");
 
                 var stock = _converterStockProductEditDto.Convert(editStockProduct, null);
-                _stockProductRepository.Save(stock);
+                _stockProductRepositoryOrganization.Save(stock);
             }
             catch (Exception ex)
             {

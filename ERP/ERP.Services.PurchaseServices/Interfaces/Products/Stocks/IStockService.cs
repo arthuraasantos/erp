@@ -1,13 +1,10 @@
-﻿using System;
-using ERP.Services.PurchaseServices.Dtos.Stocks;
+﻿using ERP.Services.PurchaseServices.Dtos.Stocks;
+using ERP.Services.PurchaseServices.Interfaces.Base;
 
 namespace ERP.Services.PurchaseServices.Interfaces.Products.Stocks
 {
-    public interface IStockService 
+    public interface IStockService : IServiceOrganizationBase<StockDto,StockNewDto,StockEditDto>
     {
-        Guid Create(StockNewDto newOrganization, Guid organizationId);
-        StockDto Get(Guid id);
-        void Delete(Guid id);
-        void Update(StockEditDto editOrganizaztion);
+
     }
 }

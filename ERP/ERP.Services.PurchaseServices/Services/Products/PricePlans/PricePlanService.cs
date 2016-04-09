@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using ERP.Domain.Interfaces.Products.PricePlans;
 using ERP.Services.PurchaseServices.Converters.Products.PricePlans;
 using ERP.Services.PurchaseServices.Dtos.PricePlans;
@@ -8,14 +9,14 @@ namespace ERP.Services.PurchaseServices.Services.Products.PricePlans
 {
     public class PricePlanService : IPricePlanService
     {
-        private readonly IPricePlanRepository _pricePlanRepository;
+        private readonly IPricePlanRepository _pricePlanRepositoryOrganization;
         private readonly PricePlanNewDtoConverterOrganizationEntity _converterPricePlanNewDto;
         private readonly PricePlanEditDtoConverterOrganizationEntity _converterPricePlanEditDto;
         private readonly PricePlanDtoConverterOrganizationEntity _converterPricePlantDto;
 
-        public PricePlanService(IPricePlanRepository pricePlanRepository)
+        public PricePlanService(IPricePlanRepository pricePlanRepositoryOrganization)
         {
-            _pricePlanRepository = pricePlanRepository;
+            _pricePlanRepositoryOrganization = pricePlanRepositoryOrganization;
             _converterPricePlanNewDto = new PricePlanNewDtoConverterOrganizationEntity();
             _converterPricePlanEditDto = new PricePlanEditDtoConverterOrganizationEntity();
             _converterPricePlantDto = new PricePlanDtoConverterOrganizationEntity();
@@ -29,8 +30,8 @@ namespace ERP.Services.PurchaseServices.Services.Products.PricePlans
                 newPricePlan.OrganizationId = organizationId;
                 var pricePlan = _converterPricePlanNewDto.Convert(newPricePlan, null);
 
-                _pricePlanRepository.Save(pricePlan);
-                _pricePlanRepository.Execute();
+                _pricePlanRepositoryOrganization.Save(pricePlan);
+                _pricePlanRepositoryOrganization.Execute();
 
                 return pricePlan.Id;
             }
@@ -46,11 +47,11 @@ namespace ERP.Services.PurchaseServices.Services.Products.PricePlans
             return !string.IsNullOrWhiteSpace(newPricePlan.Description);
         }
 
-        public PricePlanDto Get(Guid id)
+        public PricePlanDto Get(Guid id, Guid organizationId)
         {
             try
             {
-                var priceplan = _pricePlanRepository.Get(id);
+                var priceplan = _pricePlanRepositoryOrganization.Get(id, organizationId);
                 var pricePlanDto = _converterPricePlantDto.Convert(priceplan, null);
 
                 return pricePlanDto;
@@ -61,13 +62,13 @@ namespace ERP.Services.PurchaseServices.Services.Products.PricePlans
             }
         }
 
-        public void Delete(Guid id)
+        public void Delete(Guid id, Guid organizationId)
         {
             try
             {
-                var pricePlan = _pricePlanRepository.Get(id);
-                _pricePlanRepository.Delete(pricePlan);
-                _pricePlanRepository.Execute();
+                var pricePlan = _pricePlanRepositoryOrganization.Get(id, organizationId);
+                _pricePlanRepositoryOrganization.Delete(pricePlan);
+                _pricePlanRepositoryOrganization.Execute();
             }
             catch (Exception ex)
             {
@@ -80,7 +81,7 @@ namespace ERP.Services.PurchaseServices.Services.Products.PricePlans
             if (IsValidEditPricePlan(editPricePlan)) throw new ArgumentNullException($"Um campo obrigatório não foi preenchido");
 
             var pricePlan = _converterPricePlanEditDto.Convert(editPricePlan, null);
-            _pricePlanRepository.Save(pricePlan);
+            _pricePlanRepositoryOrganization.Save(pricePlan);
         }
 
         private static bool IsValidEditPricePlan(PricePlanEditDto editPricePlan)

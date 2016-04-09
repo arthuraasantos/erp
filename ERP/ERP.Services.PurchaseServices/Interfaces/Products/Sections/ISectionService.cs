@@ -1,13 +1,9 @@
-﻿using System;
-using ERP.Services.PurchaseServices.Dtos.Sections;
+﻿using ERP.Services.PurchaseServices.Dtos.Sections;
+using ERP.Services.PurchaseServices.Interfaces.Base;
 
 namespace ERP.Services.PurchaseServices.Interfaces.Products.Sections
 {
-    public interface ISectionService
+    public interface ISectionService : IServiceOrganizationBase<SectionDto,SectionNewDto,SectionEditDto>
     {
-        Guid Create(SectionNewDto newOrganization, Guid organizationId);
-        SectionDto Get(Guid id);
-        void Delete(Guid id);
-        void Update(SectionEditDto editOrganizaztion);
     }
 }

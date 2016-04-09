@@ -4,7 +4,6 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using ERP.Services.PurchaseServices.Dtos.Suppliers;
-using ERP.Services.PurchaseServices.Interfaces;
 using ERP.Services.PurchaseServices.Interfaces.Suppliers;
 
 namespace ERP.Presentation.Purchase.Api.Controllers
@@ -26,9 +25,9 @@ namespace ERP.Presentation.Purchase.Api.Controllers
         }
 
         // GET: api/Supplier/5
-        public SupplierDto Get(Guid id)
+        public SupplierDto Get(Guid id, Guid organizationId)
         {
-            var supplierDto = _supplierService.GetById(id);
+            var supplierDto = _supplierService.Get(id, organizationId);
             return supplierDto;
         }
 
@@ -55,9 +54,9 @@ namespace ERP.Presentation.Purchase.Api.Controllers
         }
 
         // DELETE: api/Supplier/5
-        public void Delete(Guid id)
+        public void Delete(Guid id, Guid organizationId)
         {
-            _supplierService.Delete(id);
+            _supplierService.Delete(id, organizationId);
         }
     }
 }

@@ -7,7 +7,7 @@ using ERP.Infrastructure.Data.Repositories.Base;
 
 namespace ERP.Infrastructure.Data.Repositories.Products
 {
-    public class ProductRepository: RepositoryBase<Product>, IProductRepository
+    public class ProductRepository: RepositoryOrganizationBase<Product>, IProductRepository
     {
         public ProductRepository(IPurchaseUnitOfWork uow) : base(uow)
         {

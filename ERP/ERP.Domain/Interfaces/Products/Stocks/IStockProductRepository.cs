@@ -3,7 +3,7 @@ using ERP.Domain.Interfaces.Base;
 
 namespace ERP.Domain.Interfaces.Products.Stocks
 {
-    public interface IStockProductRepository: IRepositoryBase<StockProduct>
+    public interface IStockProductRepository: IRepositoryOrganizationBase<StockProduct>
     {
     }
 }

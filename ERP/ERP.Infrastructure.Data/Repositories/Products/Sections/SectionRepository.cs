@@ -5,7 +5,7 @@ using ERP.Infrastructure.Data.Repositories.Base;
 
 namespace ERP.Infrastructure.Data.Repositories.Products.Sections
 {
-    public class SectionRepository : RepositoryBase<Section>, ISectionRepository
+    public class SectionRepository : RepositoryOrganizationBase<Section>, ISectionRepository
     {
         public SectionRepository(IPurchaseUnitOfWork uow) : base(uow)
         {

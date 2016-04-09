@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using ERP.Domain.Interfaces.Products.Sections;
 using ERP.Services.PurchaseServices.Converters.Products.Sections;
 using ERP.Services.PurchaseServices.Dtos.Sections;
@@ -8,14 +9,14 @@ namespace ERP.Services.PurchaseServices.Services.Products.Sections
 {
     public class SectionService : ISectionService
     {
-        private readonly ISectionRepository _sectionRepository;
+        private readonly ISectionRepository _sectionRepositoryOrganization;
         private readonly SectionNewDtoConverterOrganizationEntity _converterSectionNewDto;
         private readonly SectionDtoConverterOrganizationEntity _converterSectionDto;
         private readonly SectionEditDtoConverterOrganizationEntity _converterSectionEditDto;
 
-        public SectionService(ISectionRepository sectionRepository)
+        public SectionService(ISectionRepository sectionRepositoryOrganization)
         {
-            _sectionRepository = sectionRepository;
+            _sectionRepositoryOrganization = sectionRepositoryOrganization;
             _converterSectionDto = new SectionDtoConverterOrganizationEntity();
             _converterSectionNewDto = new SectionNewDtoConverterOrganizationEntity();
             _converterSectionEditDto = new SectionEditDtoConverterOrganizationEntity();
@@ -29,8 +30,8 @@ namespace ERP.Services.PurchaseServices.Services.Products.Sections
                 newSection.OrganizationId = organizationId;
                 var section = _converterSectionNewDto.Convert(newSection,null);
 
-                _sectionRepository.Save(section);
-                _sectionRepository.Execute();
+                _sectionRepositoryOrganization.Save(section);
+                _sectionRepositoryOrganization.Execute();
 
                 return section.Id;
             }
@@ -42,11 +43,11 @@ namespace ERP.Services.PurchaseServices.Services.Products.Sections
         }
 
       
-        public SectionDto Get(Guid id)
+        public SectionDto Get(Guid id, Guid organizationId)
         {
             try
             {
-                var section = _sectionRepository.Get(id);
+                var section = _sectionRepositoryOrganization.BaseQuery().FirstOrDefault(p => p.Id == id);
                 var sectionDto = _converterSectionDto.Convert(section, null);
 
                 return sectionDto;
@@ -57,13 +58,13 @@ namespace ERP.Services.PurchaseServices.Services.Products.Sections
             }
         }
 
-        public void Delete(Guid id)
+        public void Delete(Guid id, Guid organizationId)
         {
             try
             {
-                var section = _sectionRepository.Get(id);
-                _sectionRepository.Delete(section);
-                _sectionRepository.Execute();
+                var section = _sectionRepositoryOrganization.Get(id, organizationId);
+                _sectionRepositoryOrganization.Delete(section);
+                _sectionRepositoryOrganization.Execute();
             }
             catch (Exception ex)
             {
@@ -77,7 +78,7 @@ namespace ERP.Services.PurchaseServices.Services.Products.Sections
             if (IsValidSection(editSection)) throw new ArgumentNullException($"Um campo obrigatório não foi preenchido");
 
             var section = _converterSectionEditDto.Convert(editSection, null);
-            _sectionRepository.Save(section);
+            _sectionRepositoryOrganization.Save(section);
 
         }
 

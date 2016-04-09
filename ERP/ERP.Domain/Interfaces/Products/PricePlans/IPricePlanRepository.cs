@@ -3,7 +3,7 @@ using ERP.Domain.Interfaces.Base;
 
 namespace ERP.Domain.Interfaces.Products.PricePlans
 {
-    public interface IPricePlanRepository : IRepositoryBase<PricePlan>
+    public interface IPricePlanRepository : IRepositoryOrganizationBase<PricePlan>
     {
     }
 }

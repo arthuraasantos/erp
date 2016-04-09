@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using ERP.Domain.Interfaces.Products;
 using ERP.Services.PurchaseServices.Converters.Products;
 using ERP.Services.PurchaseServices.Dtos.Products;
@@ -8,14 +9,14 @@ namespace ERP.Services.PurchaseServices.Services.Products
 {
     public class ProductService : IProductService
     {
-        private readonly IProductRepository _productRepository;
+        private readonly IProductRepository _productRepositoryOrganization;
         private readonly ProductDtoConverterOrganizationEntity _converterProductDto;
         private readonly ProductEditDtoConverterOrganizationEntity _converterProductEditDto;
         private readonly ProductNewDtoConverterOrganizationEntity _converterProductNewDto;
 
-        public ProductService(IProductRepository productRepository)
+        public ProductService(IProductRepository productRepositoryOrganization)
         {
-            _productRepository = productRepository;
+            _productRepositoryOrganization = productRepositoryOrganization;
             _converterProductDto = new ProductDtoConverterOrganizationEntity();
             _converterProductEditDto = new ProductEditDtoConverterOrganizationEntity();
             _converterProductNewDto = new ProductNewDtoConverterOrganizationEntity();
@@ -30,8 +31,8 @@ namespace ERP.Services.PurchaseServices.Services.Products
                 newProduct.OrganizationId = organizationId;
                 var product = _converterProductNewDto.Convert(newProduct, null);
 
-                _productRepository.Save(product);
-                _productRepository.Execute();
+                _productRepositoryOrganization.Save(product);
+                _productRepositoryOrganization.Execute();
 
                 return product.Id;
             }
@@ -43,11 +44,11 @@ namespace ERP.Services.PurchaseServices.Services.Products
             }
         }
 
-        public ProductDto Get(Guid id)
+        public ProductDto Get(Guid id, Guid organizationId)
         {
             try
             {
-                var product = _productRepository.Get(id);
+                var product = _productRepositoryOrganization.Get(id, organizationId);
                 var productDto = _converterProductDto.Convert(product, null);
 
                 return productDto;
@@ -58,13 +59,13 @@ namespace ERP.Services.PurchaseServices.Services.Products
             }
         }
 
-        public void Delete(Guid id)
+        public void Delete(Guid id, Guid organizationId)
         {
             try
             {
-                var product = _productRepository.Get(id);
-                _productRepository.Delete(product);
-                _productRepository.Execute();
+                var product = _productRepositoryOrganization.Get(id, organizationId);
+                _productRepositoryOrganization.Delete(product);
+                _productRepositoryOrganization.Execute();
             }
             catch (Exception ex)
             {
@@ -79,7 +80,7 @@ namespace ERP.Services.PurchaseServices.Services.Products
                 if (IsValidEditProduct(editProduct)) throw new ArgumentNullException($"Um campo obrigatório não foi preenchido");
 
                 var product = _converterProductEditDto.Convert(editProduct, null);
-                _productRepository.Save(product);
+                _productRepositoryOrganization.Save(product);
             }
             catch (Exception ex)
             {

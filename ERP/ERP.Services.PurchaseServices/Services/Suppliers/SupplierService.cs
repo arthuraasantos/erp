@@ -71,11 +71,11 @@ namespace ERP.Services.PurchaseServices.Services.Suppliers
             }
         }
 
-        public SupplierDto GetById(Guid id)
+        public SupplierDto Get(Guid id, Guid organizationId)
         {
             try
             {
-                var supplier = _supplierRepository.Get(id);
+                var supplier = _supplierRepository.Get(id, organizationId);
                 var supplierDto = _supplierDtoConverterOrganizationEntity.Convert(supplier, null);
 
                 return supplierDto;
@@ -86,11 +86,11 @@ namespace ERP.Services.PurchaseServices.Services.Suppliers
             }
         }
 
-        public void Delete(Guid id)
+        public void Delete(Guid id, Guid organizationId)
         {
             try
             {
-                var supplierDto = GetById(id);
+                var supplierDto = Get(id, organizationId);
                 var supplier = _supplierDtoConverterOrganizationEntity.Convert(supplierDto, null);
                 _supplierRepository.Delete(supplier);
             }

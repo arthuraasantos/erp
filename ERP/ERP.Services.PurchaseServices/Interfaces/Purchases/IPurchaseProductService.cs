@@ -1,13 +1,11 @@
 ﻿using System;
 using ERP.Services.PurchaseServices.Dtos.PurchaseProducts;
+using ERP.Services.PurchaseServices.Interfaces.Base;
 
 namespace ERP.Services.PurchaseServices.Interfaces.Purchases
 {
-    public interface IPurchaseProductService
+    public interface IPurchaseProductService : IServiceBase<PurchaseProductDto, PurchaseProductNewDto, PurchaseProductEditDto>
     {
-        Guid Create(PurchaseProductNewDto newOrganization, Guid organizationId);
-        PurchaseProductDto Get(Guid id);
-        void Delete(Guid id);
-        void Update(PurchaseProductEditDto editOrganizaztion);
+    
     }
 }

@@ -112,6 +112,8 @@
     <Compile Include="Dtos\Suppliers\SupplierDto.cs" />
     <Compile Include="Dtos\Suppliers\SupplierEditDto.cs" />
     <Compile Include="Dtos\Suppliers\SupplierNewDto.cs" />
+    <Compile Include="Interfaces\Base\IServiceBase.cs" />
+    <Compile Include="Interfaces\Base\IServiceOrganizationBase.cs" />
     <Compile Include="Interfaces\Products\PricePlans\IPricePlanService.cs" />
     <Compile Include="Interfaces\Products\IProductService.cs" />
     <Compile Include="Interfaces\Products\Stocks\IStockService.cs" />
@@ -119,7 +121,7 @@
     <Compile Include="Interfaces\Organizations\IOrganizationService.cs" />
     <Compile Include="Interfaces\Products\Stocks\IStockProductService.cs" />
     <Compile Include="Interfaces\Purchases\IPurchaseProductService.cs" />
-    <Compile Include="Interfaces\Purchases\IPurchaseService.cs" />
+    <Compile Include="Interfaces\Purchases\IPurchaseServiceOrganization.cs" />
     <Compile Include="Interfaces\Suppliers\ISupplierService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Organizations\OrganizationService.cs" />

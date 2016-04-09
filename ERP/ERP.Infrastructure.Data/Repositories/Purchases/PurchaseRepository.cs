@@ -8,7 +8,7 @@ using ERP.Infrastructure.Data.Repositories.Base;
 
 namespace ERP.Infrastructure.Data.Repositories.Purchases
 {
-    public class PurchaseRepository: RepositoryBase<Purchase>, IPurchaseRepository
+    public class PurchaseRepository: RepositoryOrganizationBase<Purchase>, IPurchaseRepository
     {
         public PurchaseRepository(IPurchaseUnitOfWork uow) : base(uow)
         {

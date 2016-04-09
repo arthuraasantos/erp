@@ -3,11 +3,11 @@ using ERP.Services.PurchaseServices.Dtos.Organizations;
 
 namespace ERP.Services.PurchaseServices.Interfaces.Organizations
 {
-    public interface IOrganizationService 
+    public interface IOrganizationService
     {
-        Guid Create(OrganizationNewDto newOrganization);
-        OrganizationDto Get(Guid id);
-        void Delete(Guid id);
-        void Update(OrganizationEditDto editOrganizaztion);
+        Guid Create(OrganizationNewDto newPricePlan);
+        OrganizationDto Get(Guid organizationId);
+        void Delete(Guid organizationId);
+        void Update(OrganizationEditDto editPricePlan);
     }
 }

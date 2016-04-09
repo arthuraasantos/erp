@@ -5,7 +5,7 @@ using ERP.Infrastructure.Data.Repositories.Base;
 
 namespace ERP.Infrastructure.Data.Repositories.Products.Stocks
 {
-    public class StockRepository : RepositoryBase<Stock>, IStockRepository
+    public class StockRepository : RepositoryOrganizationBase<Stock>, IStockRepository
     {
         public StockRepository(IPurchaseUnitOfWork uow) : base(uow)
         {

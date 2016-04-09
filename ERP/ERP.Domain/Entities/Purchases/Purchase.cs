@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using ERP.Domain.Entities.Common;
-using ERP.Domain.Entities.Configurations;
 using ERP.Domain.Entities.Products.Stocks;
 using ERP.Domain.Entities.Suppliers;
 using ERP.Domain.Services.Purchases;
@@ -14,7 +13,6 @@ namespace ERP.Domain.Entities.Purchases
         public string Notes { get; set; }
         public decimal DeliveryValue { get; set; }
         public List<PurchaseProduct> ChildProducts { get; set; }
-        public List<Configuration> Configurations { get; set; }
         
 
         public Guid SupplierId { get; set; }
