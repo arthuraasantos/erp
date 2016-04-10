@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -19,35 +17,74 @@ namespace ERP.Presentation.Purchase.Api.Controllers
             _sectionService = sectionService;
         }
 
-        // GET: api/Section
+        [Route("sections")]
+        [ResponseType(typeof(SectionDto))]
+        public HttpResponseMessage Get(Guid id,Guid organizationId)
+        {
+            try
+            {
+                var section = _sectionService.Get(id, organizationId);
+                return Request.CreateResponse(HttpStatusCode.OK, section);
+            }
+            catch(NullReferenceException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.NoContent, ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+        
+        [Route("sections")]
+        [ResponseType(typeof(Guid))]
+        public HttpResponseMessage Post([FromBody]SectionNewDto section)
+        {
+            try
+            {
+                var sectionId = _sectionService.Create(section, section.OrganizationId);
+                return Request.CreateResponse(HttpStatusCode.OK, sectionId);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpPut]
         [Route("sections")]
         [ResponseType(typeof(string))]
-        public HttpResponseMessage Get(Guid organizationId)
+        public HttpResponseMessage Put([FromBody]SectionEditDto section)
         {
-            //return _sectionService.GetAll(organizationId);
-            return Request.CreateResponse(HttpStatusCode.Forbidden, "Método proibido");
+            try
+            {
+                _sectionService.Update(section);
+                return Request.CreateResponse(HttpStatusCode.OK, "Sua alteração foi feita");
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError,
+                    $"Opa, ocorreu algum problema nessa alteração. Erro: {ex.Message}");
+            }
+            
+
         }
 
+        [HttpDelete]
         [Route("sections")]
-        public string Get(Guid id,Guid organizationId)
+        [ResponseType(typeof(string))]
+        public HttpResponseMessage Delete([FromUri]Guid organizationId,[FromUri]Guid sectionId)
         {
-            var section = _sectionService.Get(id, organizationId);
-            return "value";
-        }
-
-        // POST: api/Section
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT: api/Section/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Section/5
-        public void Delete(int id)
-        {
+            try
+            {
+                _sectionService.Delete(sectionId, organizationId);
+                return Request.CreateResponse(HttpStatusCode.OK, "Seção deletada");
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError,
+                    $"Opa, ocorreu algum problema ao deletar. Erro: {ex.Message}");
+            }
         }
     }
 }

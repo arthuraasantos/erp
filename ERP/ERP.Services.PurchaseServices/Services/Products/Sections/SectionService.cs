@@ -47,10 +47,17 @@ namespace ERP.Services.PurchaseServices.Services.Products.Sections
         {
             try
             {
-                var section = _sectionRepositoryOrganization.BaseQuery().FirstOrDefault(p => p.Id == id);
+                var section = _sectionRepositoryOrganization.Get(id, organizationId);
+                if (section == null) throw new NullReferenceException();
+
                 var sectionDto = _converterSectionDto.Convert(section, null);
 
                 return sectionDto;
+            }
+            catch (NullReferenceException)
+            {
+                throw new NullReferenceException("Seção não encontrada");
+
             }
             catch (Exception ex)
             {
@@ -75,7 +82,7 @@ namespace ERP.Services.PurchaseServices.Services.Products.Sections
 
         public void Update(SectionEditDto editSection)
         {
-            if (IsValidSection(editSection)) throw new ArgumentNullException($"Um campo obrigatório não foi preenchido");
+            if (!IsValidSection(editSection)) throw new ArgumentNullException($"Um campo obrigatório não foi preenchido");
 
             var section = _converterSectionEditDto.Convert(editSection, null);
             _sectionRepositoryOrganization.Save(section);

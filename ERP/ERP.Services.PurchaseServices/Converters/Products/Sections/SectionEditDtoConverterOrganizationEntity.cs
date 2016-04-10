@@ -14,7 +14,7 @@ namespace ERP.Services.PurchaseServices.Converters.Products.Sections
         public Section Convert(SectionEditDto origin, Section destiny)
         {
             if (destiny == null) destiny = new Section();
-
+            destiny.Id = origin.SectionId;
             destiny.OrganizationId = origin.OrganizationId;
             destiny.Description = origin.Description;
             destiny.Location = origin.Location;
@@ -25,7 +25,7 @@ namespace ERP.Services.PurchaseServices.Converters.Products.Sections
         public SectionEditDto Convert(Section origin, SectionEditDto destiny)
         {
             if (destiny == null) destiny = new SectionEditDto();
-
+            origin.Id = destiny.SectionId;
             destiny.OrganizationId = origin.OrganizationId;
             destiny.Description = origin.Description;
             destiny.Location = origin.Location;

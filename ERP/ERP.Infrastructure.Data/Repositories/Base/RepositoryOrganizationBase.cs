@@ -54,7 +54,13 @@ namespace ERP.Infrastructure.Data.Repositories.Base
         public T Save(T entity)
         {
             var set = Uow.Set<T>();
-            Uow.Entry<T>(entity).State = set.Local.Any(e => e == entity) ? EntityState.Modified : EntityState.Added;
+            Uow.Entry(entity).State = set.Any(e => e.Id == entity.Id) ? EntityState.Modified : EntityState.Added;
+            //Uow.Entry<T>(entity).State = set.Local.Any(e => e.Id == entity.Id) ? EntityState.Modified : EntityState.Added;
+            //var ent = Uow.Set<T>().FirstOrDefault(e => e.Id == entity.Id);
+            //if (ent == null)
+            //    Uow.Entry(entity).State = EntityState.Added;
+
+            //Uow.Entry(entity).State = EntityState.Modified;
 
             Execute();
             return entity;
