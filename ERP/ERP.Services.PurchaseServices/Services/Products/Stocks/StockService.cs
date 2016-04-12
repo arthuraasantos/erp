@@ -47,9 +47,16 @@ namespace ERP.Services.PurchaseServices.Services.Products.Stocks
             try
             {
                 var stock = _stockRepositoryOrganization.Get(id, organizationId);
+                if (stock == null) throw new NullReferenceException();
+
                 var stockDto = _converterStockDto.Convert(stock, null);
 
                 return stockDto;
+            }
+            catch (NullReferenceException)
+            {
+                throw new NullReferenceException("Estoque não encontrado");
+
             }
             catch (Exception ex)
             {
@@ -73,20 +80,13 @@ namespace ERP.Services.PurchaseServices.Services.Products.Stocks
 
         public void Update(StockEditDto editStock)
         {
-            if (IsValidEditStock(editStock)) throw new ArgumentNullException($"Um campo obrigatório não foi preenchido");
+            if (!IsValidEditStock(editStock)) throw new ArgumentNullException($"Um campo obrigatório não foi preenchido");
 
             var stock = _converterStockEditDto.Convert(editStock, null);
             _stockRepositoryOrganization.Save(stock);
         }
 
-        private static bool IsValidNewStock(StockNewDto newStock)
-        {
-            return !string.IsNullOrWhiteSpace(newStock.Description);
-        }
-
-        private static bool IsValidEditStock(StockEditDto editStock)
-        {
-            return !string.IsNullOrWhiteSpace(editStock.Description);
-        }
+        private static bool IsValidNewStock(StockNewDto newStock) => !string.IsNullOrWhiteSpace(newStock.Description);
+        private static bool IsValidEditStock(StockEditDto editStock) => !string.IsNullOrWhiteSpace(editStock.Description);
     }
 }

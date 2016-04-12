@@ -14,6 +14,7 @@ namespace ERP.Services.PurchaseServices.Converters.Products.Stocks
         public Stock Convert(StockEditDto origin, Stock destiny)
         {
             if (destiny == null) destiny = new Stock();
+            destiny.Id = origin.StockId;
             destiny.OrganizationId = origin.OrganizationId;
             destiny.Description = origin.Description;
 
@@ -23,6 +24,7 @@ namespace ERP.Services.PurchaseServices.Converters.Products.Stocks
         public StockEditDto Convert(Stock origin, StockEditDto destiny)
         {
             if (destiny == null) destiny = new StockEditDto();
+            destiny.StockId = origin.Id;
             destiny.OrganizationId = origin.OrganizationId;
             destiny.Description = origin.Description;
 

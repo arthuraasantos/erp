@@ -9,6 +9,7 @@ namespace ERP.Services.PurchaseServices.Converters.Products.Stocks
         public Stock Convert(StockDto origin, Stock destiny)
         {
             if (destiny == null) destiny = new Stock();
+            destiny.Id = origin.StockId;
             destiny.OrganizationId = origin.OrganizationId;
             destiny.Description = origin.Description;
             
@@ -18,6 +19,7 @@ namespace ERP.Services.PurchaseServices.Converters.Products.Stocks
         public StockDto Convert(Stock origin, StockDto destiny)
         {
             if (destiny == null) destiny = new StockDto();
+            destiny.StockId = origin.Id;
             destiny.OrganizationId = origin.OrganizationId;
             destiny.Description = origin.Description;
 

@@ -1,32 +1,35 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using ERP.Services.PurchaseServices.Dtos.Sections;
-using ERP.Services.PurchaseServices.Interfaces.Products.Sections;
+using ERP.Services.PurchaseServices.Dtos.Stocks;
+using ERP.Services.PurchaseServices.Interfaces.Products.Stocks;
 
 namespace ERP.Presentation.Purchase.Api.Controllers
 {
-    public class SectionController : ApiController
+    public class StockController : ApiController
     {
-        private readonly ISectionService _sectionService;
+        private readonly IStockService _stockService;
 
-        public SectionController(ISectionService sectionService)
+        public StockController(IStockService stockService)
         {
-            _sectionService = sectionService;
+            _stockService = stockService;
         }
 
-        [Route("sections")]
-        [ResponseType(typeof(SectionDto))]
-        public HttpResponseMessage Get(Guid id,Guid organizationId)
+        // GET: api/Stock
+        [Route("stocks")]
+        [ResponseType(typeof(StockDto))]
+        public HttpResponseMessage Get(Guid stockId, Guid organizationId)
         {
             try
             {
-                var section = _sectionService.Get(id, organizationId);
-                return Request.CreateResponse(HttpStatusCode.OK, section);
+                var stockDto = _stockService.Get(stockId, organizationId);
+                return Request.CreateResponse(HttpStatusCode.OK, stockDto);
             }
-            catch(NullReferenceException ex)
+            catch (NullReferenceException ex)
             {
                 return Request.CreateResponse(HttpStatusCode.NoContent, ex.Message);
             }
@@ -35,15 +38,15 @@ namespace ERP.Presentation.Purchase.Api.Controllers
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
-        
-        [Route("sections")]
+
+        [Route("stocks")]
         [ResponseType(typeof(Guid))]
-        public HttpResponseMessage Post([FromBody]SectionNewDto section)
+        public HttpResponseMessage Post([FromBody]StockNewDto stockNewDto)
         {
             try
             {
-                var sectionId = _sectionService.Create(section, section.OrganizationId);
-                return Request.CreateResponse(HttpStatusCode.OK, sectionId);
+                var stockId = _stockService.Create(stockNewDto, stockNewDto.OrganizationId);
+                return Request.CreateResponse(HttpStatusCode.OK, stockId);
             }
             catch (Exception ex)
             {
@@ -51,14 +54,13 @@ namespace ERP.Presentation.Purchase.Api.Controllers
             }
         }
 
-        [HttpPut]
-        [Route("sections")]
+        [Route("stocks")]
         [ResponseType(typeof(string))]
-        public HttpResponseMessage Put([FromBody]SectionEditDto section)
+        public HttpResponseMessage Put([FromBody]StockEditDto stockEditDto)
         {
             try
             {
-                _sectionService.Update(section);
+                _stockService.Update(stockEditDto);
                 return Request.CreateResponse(HttpStatusCode.OK, "Sua alteração foi feita");
             }
             catch (Exception ex)
@@ -68,15 +70,14 @@ namespace ERP.Presentation.Purchase.Api.Controllers
             }
         }
 
-        [HttpDelete]
-        [Route("sections")]
+        [Route("stocks")]
         [ResponseType(typeof(string))]
-        public HttpResponseMessage Delete([FromUri]Guid organizationId,[FromUri]Guid sectionId)
+        public HttpResponseMessage Delete([FromUri]Guid stockId, [FromUri] Guid organizationId)
         {
             try
             {
-                _sectionService.Delete(sectionId, organizationId);
-                return Request.CreateResponse(HttpStatusCode.OK, "Seção deletada");
+                _stockService.Delete(stockId, organizationId);
+                return Request.CreateResponse(HttpStatusCode.OK, "Estoque deletado");
             }
             catch (Exception ex)
             {
