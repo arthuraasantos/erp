@@ -52,9 +52,16 @@ namespace ERP.Services.PurchaseServices.Services.Products.PricePlans
             try
             {
                 var priceplan = _pricePlanRepositoryOrganization.Get(id, organizationId);
+                if (priceplan == null) throw new NullReferenceException();
+
                 var pricePlanDto = _converterPricePlantDto.Convert(priceplan, null);
 
                 return pricePlanDto;
+            }
+            catch (NullReferenceException)
+            {
+                throw new NullReferenceException("Plano de preços não encontrado");
+
             }
             catch (Exception ex)
             {
@@ -78,7 +85,7 @@ namespace ERP.Services.PurchaseServices.Services.Products.PricePlans
 
         public void Update(PricePlanEditDto editPricePlan)
         {
-            if (IsValidEditPricePlan(editPricePlan)) throw new ArgumentNullException($"Um campo obrigatório não foi preenchido");
+            if (!IsValidEditPricePlan(editPricePlan)) throw new ArgumentNullException($"Um campo obrigatório não foi preenchido");
 
             var pricePlan = _converterPricePlanEditDto.Convert(editPricePlan, null);
             _pricePlanRepositoryOrganization.Save(pricePlan);
