@@ -10,7 +10,7 @@ namespace ERP.Services.PurchaseServices.Converters.Products.StockProducts
         public StockProduct Convert(StockProductNewDto origin, StockProduct destiny)
         {
             if (destiny == null) destiny = new StockProduct();
-            destiny.Id = origin.StockProductId;
+            destiny.Id = Guid.NewGuid();
             destiny.OrganizationId = origin.OrganizationId;
             destiny.ProductId = origin.ProductId;
             destiny.StockId = origin.StockId;

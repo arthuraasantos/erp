@@ -12,17 +12,39 @@ namespace ERP.Services.PurchaseServices.Services.Products.Stocks
 {
     public class StockProductService : IStockProductService
     {
-        private readonly IStockProductRepository _stockProductRepositoryOrganization;
+        private readonly IStockProductRepository _stockProductRepository;
         private readonly StockProductNewDtoConverterOrganizationEntity _converterStockProductNewDto;
         private readonly StockProductEditDtoConverterOrganizationEntity _converterStockProductEditDto;
         private readonly StockProductDtoConverterOrganizationEntity _converterStockProductDto;
 
-        public StockProductService(IStockProductRepository stockProductRepositoryOrganization)
+        public StockProductService(IStockProductRepository stockProductRepository)
         {
             _converterStockProductDto = new StockProductDtoConverterOrganizationEntity();
             _converterStockProductEditDto = new StockProductEditDtoConverterOrganizationEntity();
             _converterStockProductNewDto = new StockProductNewDtoConverterOrganizationEntity();
-            _stockProductRepositoryOrganization = stockProductRepositoryOrganization;
+            _stockProductRepository = stockProductRepository;
+        }
+
+        public StockProductDto Get(Guid id, Guid organizationId)
+        {
+            try
+            {
+                var stockProduct = _stockProductRepository.Get(id, organizationId);
+                if (stockProduct == null) throw new NullReferenceException();
+
+                var stockProductDto = _converterStockProductDto.Convert(stockProduct, null);
+
+                return stockProductDto;
+            }
+            catch (NullReferenceException)
+            {
+                throw new NullReferenceException("Produto estoque não encontrado");
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro ao obter produto no estoque: {ex.Message}");
+            }
         }
 
         public Guid Create(StockProductNewDto newStockProduct, Guid organizationId)
@@ -33,11 +55,12 @@ namespace ERP.Services.PurchaseServices.Services.Products.Stocks
                 newStockProduct.OrganizationId = organizationId;
                 var stockProduct = _converterStockProductNewDto.Convert(newStockProduct, null);
 
-                _stockProductRepositoryOrganization.Save(stockProduct);
-                _stockProductRepositoryOrganization.Execute();
+                _stockProductRepository.Save(stockProduct);
+                _stockProductRepository.Execute();
 
                 return stockProduct.Id;
             }
+           
             catch (Exception ex)
             {
                 //ToDo Implementar log de erros 
@@ -46,28 +69,13 @@ namespace ERP.Services.PurchaseServices.Services.Products.Stocks
         }
 
 
-        public StockProductDto Get(Guid id, Guid organizationId)
-        {
-            try
-            {
-                var stockProduct = _stockProductRepositoryOrganization.Get(id, organizationId);
-                var stockProductDto = _converterStockProductDto.Convert(stockProduct, null);
-
-                return stockProductDto;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Erro ao obter produto no estoque: {ex.Message}");
-            }
-        }
-
         public void Delete(Guid id, Guid organizationId)
         {
             try
             {
-                var stockProduct = _stockProductRepositoryOrganization.Get(id, organizationId);
-                _stockProductRepositoryOrganization.Delete(stockProduct);
-                _stockProductRepositoryOrganization.Execute();
+                var stockProduct = _stockProductRepository.Get(id, organizationId);
+                _stockProductRepository.Delete(stockProduct);
+                _stockProductRepository.Execute();
             }
             catch (Exception ex)
             {
@@ -79,10 +87,10 @@ namespace ERP.Services.PurchaseServices.Services.Products.Stocks
         {
             try
             {
-                if (IsValidEditStockProduct(editStockProduct)) throw new ArgumentNullException($"Um campo obrigatório não foi preenchido");
+                if (!IsValidEditStockProduct(editStockProduct)) throw new ArgumentNullException($"Um campo obrigatório não foi preenchido");
 
                 var stock = _converterStockProductEditDto.Convert(editStockProduct, null);
-                _stockProductRepositoryOrganization.Save(stock);
+                _stockProductRepository.Save(stock);
             }
             catch (Exception ex)
             {

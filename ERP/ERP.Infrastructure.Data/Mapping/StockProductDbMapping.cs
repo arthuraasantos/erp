@@ -7,6 +7,7 @@ namespace ERP.Infrastructure.Data.Mapping
     {
         public StockProductDbMapping()
         {
+            Property(p => p.Id).HasColumnName("StockProductId");
             Property(p => p.ProductId).IsRequired().HasColumnName("ProductId");
             Property(p => p.StockId).IsRequired().HasColumnName("StockId");
 

@@ -78,6 +78,7 @@ namespace ERP.Services.PurchaseServices.DependencyInjector
             container.Register<IPricePlanService, PricePlanService>();
             container.Register<ISectionService, SectionService>();
             container.Register<IStockService, StockService>();
+            container.Register<IStockProductService, StockProductService>();
             container.Register<IProductService, ProductService>();
             container.Register<IPurchaseServiceOrganization, PurchaseService>();
             container.Register<IPurchaseProductService, PurchaseProductService>();

@@ -21,6 +21,7 @@ namespace ERP.Services.PurchaseServices.Converters.Products.StockProducts
         public StockProductDto Convert(StockProduct origin, StockProductDto destiny)
         {
             if (destiny == null) destiny = new StockProductDto();
+            destiny.StockProductId = origin.Id;
             destiny.OrganizationId = origin.OrganizationId;
             destiny.ProductId = origin.ProductId;
             destiny.StockId = origin.StockId;
