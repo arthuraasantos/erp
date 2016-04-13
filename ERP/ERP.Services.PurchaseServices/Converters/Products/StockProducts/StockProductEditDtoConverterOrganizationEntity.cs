@@ -10,6 +10,7 @@ namespace ERP.Services.PurchaseServices.Converters.Products.StockProducts
         public StockProduct Convert(StockProductEditDto origin, StockProduct destiny)
         {
             if (destiny == null) destiny = new StockProduct();
+            destiny.Id = origin.StockProductId;
             destiny.OrganizationId = origin.OrganizationId;
             destiny.ProductId = origin.ProductId;
             destiny.StockId = origin.StockId;
@@ -21,6 +22,7 @@ namespace ERP.Services.PurchaseServices.Converters.Products.StockProducts
         public StockProductEditDto Convert(StockProduct origin, StockProductEditDto destiny)
         {
             if (destiny == null) destiny = new StockProductEditDto();
+            destiny.StockProductId = origin.Id;
             destiny.OrganizationId = origin.OrganizationId;
             destiny.ProductId = origin.ProductId;
             destiny.StockId = origin.StockId;

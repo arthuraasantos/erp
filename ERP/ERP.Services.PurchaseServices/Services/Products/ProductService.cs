@@ -49,9 +49,16 @@ namespace ERP.Services.PurchaseServices.Services.Products
             try
             {
                 var product = _productRepositoryOrganization.Get(id, organizationId);
+                if (product == null) throw new NullReferenceException();
+
                 var productDto = _converterProductDto.Convert(product, null);
 
                 return productDto;
+            }
+            catch (NullReferenceException)
+            {
+                throw new NullReferenceException("Produto não encontrado");
+
             }
             catch (Exception ex)
             {
@@ -77,7 +84,7 @@ namespace ERP.Services.PurchaseServices.Services.Products
         {
             try
             {
-                if (IsValidEditProduct(editProduct)) throw new ArgumentNullException($"Um campo obrigatório não foi preenchido");
+                if (!IsValidEditProduct(editProduct)) throw new ArgumentNullException($"Um campo obrigatório não foi preenchido");
 
                 var product = _converterProductEditDto.Convert(editProduct, null);
                 _productRepositoryOrganization.Save(product);

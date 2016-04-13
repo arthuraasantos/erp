@@ -10,6 +10,7 @@ namespace ERP.Services.PurchaseServices.Converters.Products
         public Product Convert(ProductNewDto origin, Product destiny)
         {
             if (destiny == null) destiny = new Product();
+            destiny.Id = Guid.NewGuid();
             destiny.OrganizationId = origin.OrganizationId;
             destiny.Description = origin.Description;
             destiny.EanCode = origin.EanCode;

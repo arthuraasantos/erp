@@ -1,8 +1,6 @@
-﻿using System;
-using ERP.Crosscut.Converters;
+﻿using ERP.Crosscut.Converters;
 using ERP.Domain.Entities.Products.Stocks;
 using ERP.Services.PurchaseServices.Dtos.StockProducts;
-using ERP.Services.PurchaseServices.Dtos.Stocks;
 
 namespace ERP.Services.PurchaseServices.Converters.Products.StockProducts
 {
@@ -11,6 +9,7 @@ namespace ERP.Services.PurchaseServices.Converters.Products.StockProducts
         public StockProduct Convert(StockProductDto origin, StockProduct destiny)
         {
             if (destiny == null) destiny = new StockProduct();
+            destiny.Id = origin.StockProductId;
             destiny.OrganizationId = origin.OrganizationId;
             destiny.ProductId = origin.ProductId;
             destiny.StockId = origin.StockId;

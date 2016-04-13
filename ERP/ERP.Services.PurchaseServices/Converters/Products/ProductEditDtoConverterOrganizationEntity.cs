@@ -10,6 +10,7 @@ namespace ERP.Services.PurchaseServices.Converters.Products
         public Product Convert(ProductEditDto origin, Product destiny)
         {
             if (destiny == null) destiny = new Product();
+            destiny.Id = origin.ProductId;
             destiny.OrganizationId = origin.OrganizationId;
             destiny.Description = origin.Description;
             destiny.EanCode = origin.EanCode;
@@ -23,6 +24,7 @@ namespace ERP.Services.PurchaseServices.Converters.Products
         public ProductEditDto Convert(Product origin, ProductEditDto destiny)
         {
             if (destiny == null) destiny = new ProductEditDto();
+            destiny.ProductId = origin.Id;
             destiny.OrganizationId = origin.OrganizationId;
             destiny.Description = origin.Description;
             destiny.EanCode = origin.EanCode;
